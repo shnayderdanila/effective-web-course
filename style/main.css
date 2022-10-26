@@ -1,0 +1,68 @@
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ------------
+    header 
+   ------------
+*/
+header {
+  box-shadow: 0px 2px 4px 1px rgba(38, 50, 56, 0.08);
+}
+
+header h3 {
+  color: #2d3436;
+  font-size: 3em;
+}
+
+header button {
+  width: 170px;
+  height: 64px;
+
+  border-radius: 999px;
+  border: none;
+
+  color: #fff;
+  background-color: #2d3436;
+
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* ------------
+    header nav 
+   ------------
+*/
+nav li {
+  margin: 0 1em;
+}
+
+nav ul li::marker {
+  color: #fdcb6e;
+}
+
+nav ul li:first-child {
+  list-style: none;
+}
+
+/* -------------
+    color text 
+   -------------
+*/
+.text-color-dark {
+  color: #2d3436;
+}
+
+.text-color-bold-dark {
+  font-weight: bold;
+  color: #2d3436;
+}
+
+.text-color-purple {
+  color: #6c5ce7;
+}
