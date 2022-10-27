@@ -1,10 +1,14 @@
 body {
   font-family: "Inter", sans-serif;
   font-weight: normal;
+  color: #2d3436;
 }
 
 a {
   text-decoration: none;
+}
+a:active {
+  color: #2d3436;
 }
 
 /* ------------
@@ -27,11 +31,9 @@ header button {
   border-radius: 999px;
   border: none;
 
-  color: #fff;
   background-color: #2d3436;
 
   font-size: 1.5em;
-  font-weight: bold;
 }
 
 /* ------------
@@ -50,19 +52,117 @@ nav ul li:first-child {
   list-style: none;
 }
 
-/* -------------
-    color text 
-   -------------
+/* -------
+    main
+   -------
 */
-.text-color-dark {
-  color: #2d3436;
+
+/*  --------------
+      main title
+    --------------  
+*/
+
+.main-title h1 {
+  font-size: 6em;
+  letter-spacing: -3px;
 }
 
-.text-color-bold-dark {
+.main-title h2 {
+  font-size: 4em;
+}
+
+.text-with-white-shadow {
+  text-shadow: 0 4px 0 #fff;
+}
+
+.text-circle-shadow {
+  background-color: rgba(85, 239, 196, 1);
+  border-radius: 999px;
+}
+
+/* --------------- 
+      main grid
+   ---------------
+*/
+.green-box {
+  background-color: #00b894;
+  font-size: 3em;
+}
+
+.yellow-box {
+  background-color: #fdcb6e;
+}
+
+.yellow-box p {
+  margin-top: 50px;
+  text-align: center;
+  line-height: 32px;
+}
+
+.purple-box {
+  background-color: #a29bfe;
+}
+
+.light-blue-box {
+  background-color: blue;
+}
+
+.pink-box {
+  background-color: #e84393;
+}
+
+.dark-purple-box {
+  background-color: #6c5ce7;
+}
+
+.red-box {
+  background-color: #ff7675;
+}
+
+.button-grid {
+  border: none;
+  border-radius: 999px;
+
+  color: #6c5ce7;
+  font-size: 2em;
   font-weight: bold;
-  color: #2d3436;
+
+  box-shadow: 0px 8px 24px rgba(38, 50, 56, 0.1),
+    0px 16px 32px rgba(38, 50, 56, 0.2);
+  background-color: #fff;
+}
+
+/* -------------
+      text 
+   -------------
+*/
+.text-line-height {
+  line-height: 2em;
+  font-size: 1.1em;
+}
+
+.text-small {
+  font-size: 0.8em;
+}
+
+.text-bold-white {
+  color: white;
+  font-weight: bold;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 .text-color-purple {
   color: #6c5ce7;
+}
+
+.text-color-bold-purple {
+  color: #6c5ce7;
+}
+/*  #55efc4*/
+
+.text-color-pink {
+  color: #e84393;
 }
