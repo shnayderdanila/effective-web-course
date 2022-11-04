@@ -135,9 +135,9 @@ nav li {
     0px 16px 32px rgba(38, 50, 56, 0.2);
 }
 
-/* -------
-    cards
-   ------- 
+/* -------------
+    price cards
+   -------------
 */
 
 .text-yellow-circle-shadow {
@@ -145,13 +145,13 @@ nav li {
   border-radius: 999px;
 }
 
-.card {
+.price-card {
   border-radius: 16px;
 
   font-size: 1.12em;
 }
 
-.card ul {
+.price-card ul {
   list-style: none;
 }
 
@@ -162,28 +162,28 @@ nav li {
   border-radius: 999px;
 }
 
-.card img {
+.background-circle {
   padding: 10px;
   border-radius: 50%;
 }
 
-.card button {
+.price-card button {
   border-radius: 16px;
 }
 
-.background-grey-circle {
+.background-grey {
   background-color: #c2c2c2;
 }
 
-.background-yellow-circle {
+.background-yellow {
   background-color: #fdcb6e;
 }
 
-.background-light-green-circle {
+.background-light-green {
   background-color: #55efc4;
 }
 
-.card-shadow {
+.price-card-shadow {
   background-color: white;
   box-shadow: 0px 12px 8px 0px rgba(38, 50, 56, 0.08),
     0px 16px 16px 8px #26323814;
@@ -199,13 +199,49 @@ nav li {
   border: none;
 }
 
+/* 
+    info
+
+*/
+
+
+
+.info-card section p {
+  font-size: 18px;
+}
+
+.background-pink {
+  background-color: #e84393;
+}
+
+.background-blue {
+  background-color: #0984e3;
+}
+
+.background-green {
+  background-color: #00b894;
+}
+
+.background-purple {
+  background-color: #6c5ce7;
+}
+
+.info-card button {
+  border-radius: 16px;
+}
+
+
+/* ---------
+    foooter
+   --------- 
+ */
+
 /* -------------
       text 
    -------------
 */
 .text-line-height {
   line-height: 2em;
-  font-size: 1.1em;
 }
 
 .text-upper-and-letter-space {
@@ -241,7 +277,6 @@ nav li {
   color: #6c5ce7;
   font-weight: bold;
 }
-/*  #55efc4*/
 
 .text-color-pink {
   color: #e84393;

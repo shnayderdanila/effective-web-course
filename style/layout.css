@@ -222,7 +222,7 @@ main {
     cards
    ------- 
 */
-.cards {
+.price-cards {
   display: flex;
   justify-content: space-around;
 
@@ -231,7 +231,7 @@ main {
   margin-top: 40px;
 }
 
-.card {
+.price-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -241,25 +241,25 @@ main {
   padding: 32px 32px 64px 32px;
 }
 
-.card-title {
+.price-card-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.card-title span {
+.price-card-title span {
   padding: 8px 0px;
 }
 
-.card-title .purple-border {
+.price-card-title .purple-border {
   padding: 8px 16px;
 }
 
-.card h3 {
+.price-card h3 {
   margin: 16px 0 24px 0px;
 }
 
-.card ul li {
+.price-card ul li {
   display: flex;
   justify-content: left;
   align-items: center;
@@ -267,11 +267,11 @@ main {
   margin-bottom: 0.9em;
 }
 
-.card ul li img {
+.price-card ul li img {
   margin-right: 1em;
 }
 
-.card button {
+.price-card button {
   width: 306px;
   height: 64px;
 }
@@ -283,6 +283,42 @@ main {
   background-position: 0% bottom;
 }
 
-.background-wiggle-image .card {
+.background-wiggle-image .price-card {
   padding-bottom: 32px;
+}
+
+/* ------
+    info
+   ------
+ */
+
+.info-container {
+  margin-top: 200px;
+  font-size: 18px;
+}
+
+.grid-info-cards {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 25% 25% 25% 25%;
+
+  column-gap: 30px;
+  margin-top: 40px;
+}
+
+.grid-info-cards .background-circle {
+  padding: 6px 6px 0px 6px;
+}
+
+.info-card h5 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.info-card button {
+  width: 146px;
+  height: 48px;
+
+  margin-top: 8px;
+
 }
