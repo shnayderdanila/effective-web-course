@@ -101,7 +101,6 @@ nav li {
 }
 
 .yellow-box p {
-  margin-top: 50px;
   text-align: center;
   line-height: 2em;
 }
@@ -140,8 +139,10 @@ nav li {
     cards
    ------- 
 */
-.pricing h4 {
-  color: #adadad;
+
+.text-yellow-circle-shadow {
+  background-color: #fdcb6e;
+  border-radius: 999px;
 }
 
 .card {
@@ -182,10 +183,10 @@ nav li {
   background-color: #55efc4;
 }
 
-.shadow {
+.card-shadow {
   background-color: white;
-  box-shadow: 0px 4px 8px 0px rgba(38, 50, 56, 0.08),
-    0px 2px 4px 0px rgba(38, 50, 56, 0.16), 0px 16px 16px 8px #26323814;
+  box-shadow: 0px 12px 8px 0px rgba(38, 50, 56, 0.08),
+    0px 16px 16px 8px #26323814;
 }
 
 .thin-border-gray {
@@ -248,4 +249,8 @@ nav li {
 
 .text-yellow {
   color: #fdcb6e;
+}
+
+.text-gray {
+  color: #adadad;
 }
