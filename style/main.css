@@ -1,3 +1,7 @@
+/* -------- 
+    Common
+   -------- 
+*/
 body {
   font-family: "Inter", sans-serif;
   font-weight: normal;
@@ -5,10 +9,37 @@ body {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
+
 a:active {
-  color: #2d3436;
+  color: inherit;
+}
+
+h1 {
+  font-size: 6em;
+  letter-spacing: -3px;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+h3 {
+  font-size: 3em;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+h5 {
+  font-size: 1.5em;
+}
+
+h6 {
+  font-size: 1.1em;
 }
 
 /* ------------
@@ -19,11 +50,6 @@ header {
   box-shadow: 0px 2px 4px 1px rgba(38, 50, 56, 0.08);
 }
 
-header h3 {
-  color: #2d3436;
-  font-size: 3em;
-}
-
 header button {
   width: 170px;
   height: 64px;
@@ -32,23 +58,14 @@ header button {
   border: none;
 
   background-color: #2d3436;
-
-  font-size: 1.5em;
 }
 
 /* ------------
     header nav 
    ------------
 */
+
 nav li {
-  margin: 0 1em;
-}
-
-nav ul li::marker {
-  color: #fdcb6e;
-}
-
-nav ul li:first-child {
   list-style: none;
 }
 
@@ -61,15 +78,6 @@ nav ul li:first-child {
       main title
     --------------  
 */
-
-.main-title h1 {
-  font-size: 6em;
-  letter-spacing: -3px;
-}
-
-.main-title h2 {
-  font-size: 4em;
-}
 
 .text-with-white-shadow {
   text-shadow: 0 4px 0 #fff;
@@ -86,7 +94,6 @@ nav ul li:first-child {
 */
 .green-box {
   background-color: #00b894;
-  font-size: 3em;
 }
 
 .yellow-box {
@@ -94,9 +101,8 @@ nav ul li:first-child {
 }
 
 .yellow-box p {
-  margin-top: 50px;
   text-align: center;
-  line-height: 32px;
+  line-height: 2em;
 }
 
 .purple-box {
@@ -124,12 +130,73 @@ nav ul li:first-child {
   border-radius: 999px;
 
   color: #6c5ce7;
-  font-size: 2em;
-  font-weight: bold;
-
+  background-color: #fff;
   box-shadow: 0px 8px 24px rgba(38, 50, 56, 0.1),
     0px 16px 32px rgba(38, 50, 56, 0.2);
+}
+
+/* -------
+    cards
+   ------- 
+*/
+
+.text-yellow-circle-shadow {
+  background-color: #fdcb6e;
+  border-radius: 999px;
+}
+
+.card {
+  border-radius: 16px;
+
+  font-size: 1.12em;
+}
+
+.card ul {
+  list-style: none;
+}
+
+.purple-border {
+  padding: 8px 16px;
+
+  border: 1px solid #6c5ce7;
+  border-radius: 999px;
+}
+
+.card img {
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.card button {
+  border-radius: 16px;
+}
+
+.background-grey-circle {
+  background-color: #c2c2c2;
+}
+
+.background-yellow-circle {
+  background-color: #fdcb6e;
+}
+
+.background-light-green-circle {
+  background-color: #55efc4;
+}
+
+.card-shadow {
+  background-color: white;
+  box-shadow: 0px 12px 8px 0px rgba(38, 50, 56, 0.08),
+    0px 16px 16px 8px #26323814;
+}
+
+.thin-border-gray {
+  border: 1px solid #adadad;
   background-color: #fff;
+}
+
+.purple-button {
+  background-color: #6c5ce7;
+  border: none;
 }
 
 /* -------------
@@ -141,6 +208,14 @@ nav ul li:first-child {
   font-size: 1.1em;
 }
 
+.text-upper-and-letter-space {
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
 .text-small {
   font-size: 0.8em;
 }
@@ -148,6 +223,10 @@ nav ul li:first-child {
 .text-bold-white {
   color: white;
   font-weight: bold;
+}
+
+.text-white {
+  color: white;
 }
 
 .text-bold {
@@ -160,9 +239,18 @@ nav ul li:first-child {
 
 .text-color-bold-purple {
   color: #6c5ce7;
+  font-weight: bold;
 }
 /*  #55efc4*/
 
 .text-color-pink {
   color: #e84393;
+}
+
+.text-yellow {
+  color: #fdcb6e;
+}
+
+.text-gray {
+  color: #adadad;
 }
