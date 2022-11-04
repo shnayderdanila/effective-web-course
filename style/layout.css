@@ -1,8 +1,8 @@
-p,
-h2 {
+* {
   margin: 0;
   padding: 0;
 }
+
 /* ------------
     header 
    ------------
@@ -11,10 +11,11 @@ header {
   position: relative;
 
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
 
-  padding: 1em;
+  padding: 1em 0;
+  margin: 0;
 }
 
 .header-logo {
@@ -28,7 +29,7 @@ header {
 */
 nav ul {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
 }
 
 nav li {
@@ -40,6 +41,13 @@ nav li {
    -------
 */
 
+main {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
 /* main {
   background: url("../Rectangle.svg") top 0 right 0 no-repeat,
     url("../Dots.svg") top right no-repeat;
@@ -93,7 +101,7 @@ nav li {
 .grid-container {
   display: grid;
   grid-template-rows: 120px 222px 222px 82px 32px;
-  grid-template-columns: 270px 270px 170px 170px 170px;
+  grid-template-columns: 25% 25% 15% 15% 15%;
   gap: 30px;
 
   justify-content: center;
@@ -163,6 +171,88 @@ nav li {
   grid-row: 3;
 }
 
-/* 
-    cards
+/* ---------
+    pricing
+   ---------
 */
+.pricing {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin-top: 100px;
+}
+
+.pricing h4 {
+  margin-top: 40px;
+}
+
+/* -------
+    cards
+   ------- 
+*/
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  width: 110%;
+
+  margin-top: 40px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 32px 32px 64px 32px;
+
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title > span {
+  padding: 8xp 0px;
+}
+
+.card-title .purple-border {
+  padding: 8px 16px;
+}
+
+.card h3 {
+  margin: 16px 0 24px 0px;
+}
+
+.card ul li {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  margin-bottom: 0.9em;
+}
+
+.card ul li img {
+  margin-right: 1em;
+}
+
+.card button {
+  width: 306px;
+  height: 64px;
+}
+
+.background-wiggle-image {
+  padding: 0px 32px 32px 32px;
+  background-image: url("../assets/image/Wiggle.png");
+  background-repeat: no-repeat;
+  background-position: 0% bottom;
+}
+
+.background-wiggle-image .card {
+  padding-bottom: 32px;
+}
