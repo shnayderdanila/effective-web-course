@@ -33,7 +33,7 @@ nav ul {
 }
 
 nav li {
-  margin: 0 1em;
+  margin: 0 0.5em;
 }
 
 /* -------
@@ -100,13 +100,13 @@ main {
 
 .grid-container {
   display: grid;
-  grid-template-rows: 120px 222px 222px 82px 32px;
-  grid-template-columns: 25% 25% 15% 15% 15%;
+  /* grid-template-rows: 120px 222px 222px 82px 32px; */
+  grid-template-rows: 1fr 2.2fr 2fr 0.8fr 0.2fr;
+  /* grid-template-columns: 25% 25% 15% 15% 15%; */
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr;
   gap: 30px;
 
   justify-content: center;
-
-  width: 90%;
 
   margin-top: 50px;
 }
@@ -154,6 +154,7 @@ main {
 }
 
 .yellow-box p {
+  font-size: 18px;
   margin-top: 50px;
 }
 
@@ -175,6 +176,7 @@ main {
 .red-box {
   grid-column: 5;
   grid-row: 3;
+  padding-bottom: 30px;
 }
 
 /* ---------
@@ -224,9 +226,8 @@ main {
 */
 .price-cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-
-  width: 105%;
 
   margin-top: 40px;
 }
@@ -294,13 +295,12 @@ main {
 
 .info-container {
   margin-top: 200px;
-  font-size: 18px;
 }
 
 .grid-info-cards {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: repeat(4, 1fr);
 
   column-gap: 30px;
   margin-top: 40px;
@@ -308,6 +308,12 @@ main {
 
 .grid-info-cards .background-circle {
   padding: 6px 6px 0px 6px;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .info-card h5 {
@@ -320,5 +326,82 @@ main {
   height: 48px;
 
   margin-top: 8px;
+}
 
+/* --------
+    footer
+   --------
+*/
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 80px;
+}
+
+footer h6 {
+  margin-bottom: 16px;
+}
+
+footer ul {
+  margin-right: 30px;
+}
+
+.grid-footer-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 50% 50%;
+
+  row-gap: 48px;
+
+  width: 70%;
+
+  margin-bottom: 136px;
+}
+
+.grid-cell-icon img {
+  margin-right: 2em;
+}
+
+.grid-cell-email,
+.grid-cell-input-section {
+  padding-left: 16px;
+}
+
+.grid-cell-footer-info li {
+  margin-bottom: 1.2em;
+}
+
+.grid-cell-footer-info section {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+
+.grid-cell-input {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+  gap: 30px;
+}
+
+.input-name {
+  grid-column: 1 / span 2;
+}
+
+.input-mail {
+  grid-column: 3 / span 2;
+}
+
+.input-message {
+  grid-column: 1 / span 3;
+
+  padding-right: 30px;
+  resize: none;
+}
+
+footer button {
+  grid-column: 4;
 }

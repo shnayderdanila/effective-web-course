@@ -6,6 +6,7 @@ body {
   font-family: "Inter", sans-serif;
   font-weight: normal;
   color: #2d3436;
+  font-size: 18px;
 }
 
 a {
@@ -18,20 +19,20 @@ a:active {
 }
 
 h1 {
-  font-size: 6em;
+  font-size: 5.5em;
   letter-spacing: -3px;
 }
 
 h2 {
-  font-size: 4em;
+  font-size: 3.5em;
 }
 
 h3 {
-  font-size: 3em;
+  font-size: 2.7em;
 }
 
 h4 {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 h5 {
@@ -60,12 +61,7 @@ header button {
   background-color: #2d3436;
 }
 
-/* ------------
-    header nav 
-   ------------
-*/
-
-nav li {
+li {
   list-style: none;
 }
 
@@ -102,7 +98,6 @@ nav li {
 
 .yellow-box p {
   text-align: center;
-  line-height: 2em;
 }
 
 .purple-box {
@@ -147,8 +142,6 @@ nav li {
 
 .price-card {
   border-radius: 16px;
-
-  font-size: 1.12em;
 }
 
 .price-card ul {
@@ -199,16 +192,10 @@ nav li {
   border: none;
 }
 
-/* 
+/* ------
     info
-
+   ------
 */
-
-
-
-.info-card section p {
-  font-size: 18px;
-}
 
 .background-pink {
   background-color: #e84393;
@@ -230,12 +217,80 @@ nav li {
   border-radius: 16px;
 }
 
-
 /* ---------
     foooter
    --------- 
  */
+footer {
+  background-image: url("../assets/image/Wave.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
 
+  background-size: 100% 20%;
+}
+
+.grid-cell-icon img:hover {
+  background-color: #ffeaa7;
+  border-radius: 50%;
+}
+
+.grid-cell-footer-info a {
+  color: #000;
+}
+
+.grid-cell-footer-info a:hover {
+  text-decoration: underline;
+}
+
+input,
+textarea {
+  outline: none;
+  border-radius: 16px;
+  background-color: rgba(194, 194, 194, 0.24);
+  padding: 8px 16px;
+
+  font-size: 18px;
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px solid #6c5ce7;
+}
+
+input::placeholder {
+  color: #2d3436;
+}
+
+.input-message::placeholder {
+  color: #6c5ce7;
+}
+
+.input-name {
+  border: none;
+  background-image: url("../assets/image/icon-user.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.input-mail {
+  border: none;
+  background-image: url("../assets/image/icon-mail.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.input-message {
+  border: 1px;
+  background-image: url("../assets/image/icon-edit.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+footer button {
+  border-radius: 16px;
+  background-color: #6c5ce7;
+  border: none;
+}
 /* -------------
       text 
    -------------
