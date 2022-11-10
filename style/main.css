@@ -10,7 +10,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: #2d3436;
   text-decoration: none;
 }
 
@@ -52,9 +52,15 @@ header {
   box-shadow: 0px 2px 4px 1px rgba(38, 50, 56, 0.08);
 }
 
-header button {
-  width: 170px;
-  height: 64px;
+.header-menu {
+  background-color: #fff;
+  border: none;
+  margin-right: 1em;
+}
+
+.sign-button {
+  min-width: 170px;
+  min-height: 64px;
 
   border-radius: 999px;
   border: none;
@@ -222,13 +228,6 @@ li {
     foooter
    --------- 
  */
-footer {
-  background-image: url("../assets/image/Wave.png");
-  background-position: bottom;
-  background-repeat: no-repeat;
-
-  background-size: 100% 20%;
-}
 
 .grid-cell-icon img:hover {
   background-color: #ffeaa7;

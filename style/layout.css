@@ -5,7 +5,6 @@
 
 body {
   background: url("../assets/image/Rectangle.svg") top right no-repeat;
-  background-size: 62% 25%;
 }
 
 /* ------------
@@ -42,6 +41,10 @@ nav ul {
   justify-content: space-between;
 }
 
+.header-menu {
+  display: none;
+}
+
 nav li {
   margin: 0 0.5em;
 }
@@ -52,6 +55,10 @@ nav li {
 */
 
 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background: url("../assets/image/dots.png") top 10px right no-repeat;
 }
 
@@ -60,7 +67,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
+  justify-content: center;
 }
 
 /*  --------------
@@ -76,26 +83,12 @@ main {
   margin-top: 80px;
 }
 
-.backround-font {
+.background-green-ligth-ellipse {
   padding: 0 0.1em;
   background-image: url("../assets/image/font_background.svg");
-  background-position: right 85% bottom;
+  background-position: right bottom;
   background-repeat: no-repeat;
-}
-
-.grid-title {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: 1fr;
-  gap: 0.5em;
-}
-
-.sub-title-grid {
-  display: grid;
-  grid-template-rows: 60% 40%;
-  grid-template-columns: 1fr;
-
-  text-align: center;
+  background-size: 100%;
 }
 
 .text-circle-shadow {
@@ -118,11 +111,10 @@ main {
 .grid-container {
   display: grid;
   grid-template-rows: 1fr 2.2fr 2fr 0.8fr 0.2fr;
-  grid-template-columns: 270px 1.5fr 1.5fr 1fr 1fr;
+  grid-template-columns: 2fr 2fr 1fr 1fr 1fr;
   gap: 30px;
 
-  justify-content: center;
-
+  min-height: 600px;
   margin-top: 50px;
 }
 
@@ -169,7 +161,6 @@ main {
 }
 
 .yellow-box p {
-  font-size: 18px;
   margin-top: 50px;
 }
 
@@ -238,7 +229,8 @@ main {
   justify-content: space-between;
   align-items: center;
 
-  height: 440px;
+  min-height: 400px;
+  min-width: 270px;
   padding: 32px 32px 64px 32px;
 }
 
@@ -273,8 +265,8 @@ main {
 }
 
 .price-card button {
-  width: 306px;
-  height: 64px;
+  width: 100%;
+  padding: 1em 0;
 }
 
 .background-wiggle-image {
@@ -339,6 +331,12 @@ footer {
   align-items: center;
 
   margin-top: 80px;
+
+  background-image: url("../assets/image/Wave.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+
+  background-size: 100% 20%;
 }
 
 footer h6 {
