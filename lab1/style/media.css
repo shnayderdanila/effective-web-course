@@ -1,3 +1,17 @@
+@media (min-width: 1600px) {
+  .header-container {
+    width: 60%;
+  }
+
+  .main-container {
+    width: 60%;
+  }
+
+  .grid-footer-container {
+    width: 60%;
+  }
+}
+
 @media (max-width: 1400px) {
   .header-container {
     width: 80%;

@@ -113,7 +113,6 @@ main {
   grid-template-rows: 1fr 2.2fr 2fr 0.8fr 0.2fr;
   grid-template-columns: 2fr 2fr 1fr 1fr 1fr;
   gap: 30px;
-
   min-height: 600px;
   margin-top: 50px;
 }

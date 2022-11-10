@@ -65,6 +65,7 @@ header {
   border-radius: 999px;
   border: none;
 
+  font-size: 1.5em;
   background-color: #2d3436;
 }
 
@@ -133,6 +134,8 @@ li {
 
   color: #6c5ce7;
   background-color: #fff;
+  font-size: 1.8em;
+
   box-shadow: 0px 8px 24px rgba(38, 50, 56, 0.1),
     0px 16px 32px rgba(38, 50, 56, 0.2);
 }
@@ -197,6 +200,7 @@ li {
 .purple-button {
   background-color: #6c5ce7;
   border: none;
+  font-size: 1.5em;
 }
 
 /* ------
@@ -290,7 +294,9 @@ footer button {
   border-radius: 16px;
   background-color: #6c5ce7;
   border: none;
+  font-size: 1.5em;
 }
+
 /* -------------
       text 
    -------------
@@ -317,6 +323,11 @@ footer button {
 }
 
 .text-white {
+  color: white;
+}
+
+.text-bold-white {
+  font-weight: bold;
   color: white;
 }
 
