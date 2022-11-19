@@ -56,6 +56,6 @@ input {
   margin: 100px 0px;
 }
 
-.red-back {
+.red-background {
   background-color: var(--color-red);
 }
