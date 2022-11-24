@@ -23,7 +23,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 70%;
+  max-width: 1170px;
+  width: 100%;
 }
 
 .header-logo {
@@ -63,11 +64,13 @@ main {
 }
 
 .main-container {
-  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+  max-width: 1170px;
+  width: 100%;
 }
 
 /*  --------------
@@ -86,17 +89,9 @@ main {
 .background-green-ligth-ellipse {
   padding: 0 0.1em;
   background-image: url("../assets/image/font_background.svg");
-  background-position: right bottom;
+  background-position:  bottom;
   background-repeat: no-repeat;
   background-size: 100%;
-}
-
-.text-circle-shadow {
-  grid-row: 2;
-  grid-column: 1 / span 3;
-
-  width: 10.5em;
-  height: 100%;
 }
 
 .main-title h2 {
@@ -110,9 +105,12 @@ main {
 
 .grid-container {
   display: grid;
-  grid-template-rows: 1fr 2.2fr 2fr 0.8fr 0.2fr;
-  grid-template-columns: 2fr 2fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 0.8fr 0.2fr;
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+  width: 100%;
+
   gap: 30px;
+
   min-height: 600px;
   margin-top: 50px;
 }
@@ -181,7 +179,6 @@ main {
 .red-box {
   grid-column: 5;
   grid-row: 3;
-  padding-bottom: 30px;
 }
 
 /* ---------
@@ -228,8 +225,6 @@ main {
   justify-content: space-between;
   align-items: center;
 
-  min-height: 400px;
-  min-width: 270px;
   padding: 32px 32px 64px 32px;
 }
 
@@ -353,7 +348,8 @@ footer ul {
 
   row-gap: 48px;
 
-  width: 70%;
+  max-width: 1170px;
+  width: 100%;
 
   margin-bottom: 136px;
 }
@@ -379,7 +375,7 @@ footer ul {
   margin-bottom: 1.2em;
 }
 
-.grid-cell-footer-info section {
+.links {
   display: flex;
   justify-content: space-between;
   padding-right: 30px;

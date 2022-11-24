@@ -2,15 +2,17 @@
     Common
    -------- 
 */
+@import url("./variables.css");
+
 body {
   font-family: "Inter", sans-serif;
   font-weight: normal;
-  color: #2d3436;
+  color: var(--gray-color);
   font-size: 18px;
 }
 
 a {
-  color: #2d3436;
+  color: var(--gray-color);
   text-decoration: none;
 }
 
@@ -48,12 +50,12 @@ h6 {
    ------------
 */
 header {
-  background-color: #fff;
-  box-shadow: 0px 2px 4px 1px rgba(38, 50, 56, 0.08);
+  background-color: var(--white-color);
+  box-shadow: 0px 2px 4px 1px var(--header-shadow);
 }
 
 .header-menu {
-  background-color: #fff;
+  background-color: var(--white-color);
   border: none;
   margin-right: 1em;
 }
@@ -66,7 +68,7 @@ header {
   border: none;
 
   font-size: 1.5em;
-  background-color: #2d3436;
+  background-color: var(--gray-color);
 }
 
 li {
@@ -84,11 +86,11 @@ li {
 */
 
 .text-with-white-shadow {
-  text-shadow: 0 4px 0 #fff;
+  text-shadow: 0 4px 0 var(--white-color);
 }
 
 .text-circle-shadow {
-  background-color: rgba(85, 239, 196, 1);
+  background-color: var(--light-green-color);
   border-radius: 999px;
 }
 
@@ -97,11 +99,11 @@ li {
    ---------------
 */
 .green-box {
-  background-color: #00b894;
+  background-color: var(--green);
 }
 
 .yellow-box {
-  background-color: #fdcb6e;
+  background-color: var(--yellow);
 }
 
 .yellow-box p {
@@ -109,35 +111,35 @@ li {
 }
 
 .purple-box {
-  background-color: #a29bfe;
+  background-color: var(--purple);
 }
 
 .light-blue-box {
-  background-color: blue;
+  background-color: var(--blue);
 }
 
 .pink-box {
-  background-color: #e84393;
+  background-color: var(--pink);
 }
 
 .dark-purple-box {
-  background-color: #6c5ce7;
+  background-color: var(--dark-purple);
 }
 
 .red-box {
-  background-color: #ff7675;
+  background-color: var(--red);
 }
 
 .button-grid {
   border: none;
   border-radius: 999px;
 
-  color: #6c5ce7;
-  background-color: #fff;
+  color: var(--dark-purple);
+  background-color: var(--white-color);
   font-size: 1.8em;
 
-  box-shadow: 0px 8px 24px rgba(38, 50, 56, 0.1),
-    0px 16px 32px rgba(38, 50, 56, 0.2);
+  box-shadow: 0px 8px 24px var(--grid-button-shadow1),
+    0px 16px 32px var(--grid-button-shadow2);
 }
 
 /* -------------
@@ -146,7 +148,7 @@ li {
 */
 
 .text-yellow-circle-shadow {
-  background-color: #fdcb6e;
+  background-color: var(--yellow);
   border-radius: 999px;
 }
 
@@ -161,7 +163,7 @@ li {
 .purple-border {
   padding: 8px 16px;
 
-  border: 1px solid #6c5ce7;
+  border: 1px solid var(--dark-purple);
   border-radius: 999px;
 }
 
@@ -170,37 +172,39 @@ li {
   border-radius: 50%;
 }
 
-.price-card button {
-  border-radius: 16px;
-}
-
-.background-grey {
-  background-color: #c2c2c2;
+.background-gray {
+  background-color: var(--light-gray-color);
 }
 
 .background-yellow {
-  background-color: #fdcb6e;
+  background-color: var(--yellow);
 }
 
 .background-light-green {
-  background-color: #55efc4;
+  background-color: var(--text-ellipse-color);
 }
 
 .price-card-shadow {
   background-color: white;
-  box-shadow: 0px 12px 8px 0px rgba(38, 50, 56, 0.08),
+  box-shadow: 0px 12px 8px 0px var(--price-card-shadow),
     0px 16px 16px 8px #26323814;
 }
 
 .thin-border-gray {
-  border: 1px solid #adadad;
-  background-color: #fff;
+  border: 1px solid var(--light-gray-color);
+  background-color: var(--white-color);
+}
+
+.price-card button {
+  border-radius: 16px;
 }
 
 .purple-button {
-  background-color: #6c5ce7;
+  background-color: var(--dark-purple);
   border: none;
-  font-size: 1.5em;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2em;
 }
 
 /* ------
@@ -209,19 +213,19 @@ li {
 */
 
 .background-pink {
-  background-color: #e84393;
+  background-color: var(--pink);
 }
 
 .background-blue {
-  background-color: #0984e3;
+  background-color: var(--blue);
 }
 
 .background-green {
-  background-color: #00b894;
+  background-color: var(--green);
 }
 
 .background-purple {
-  background-color: #6c5ce7;
+  background-color: var(--dark-purple);
 }
 
 .info-card button {
@@ -234,12 +238,12 @@ li {
  */
 
 .grid-cell-icon img:hover {
-  background-color: #ffeaa7;
+  background-color: var(--light-yellow);
   border-radius: 50%;
 }
 
 .grid-cell-footer-info a {
-  color: #000;
+  color: var(--black);
 }
 
 .grid-cell-footer-info a:hover {
@@ -250,7 +254,7 @@ input,
 textarea {
   outline: none;
   border-radius: 16px;
-  background-color: rgba(194, 194, 194, 0.24);
+  background-color: var(--input-background);
   padding: 8px 16px;
 
   font-size: 18px;
@@ -258,7 +262,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  outline: 1px solid #6c5ce7;
+  outline: 1px solid var(--dark-purple);
 }
 
 input::placeholder {
@@ -266,7 +270,7 @@ input::placeholder {
 }
 
 .input-message::placeholder {
-  color: #6c5ce7;
+  color: var(--dark-purple);
 }
 
 .input-name {
@@ -292,7 +296,7 @@ input::placeholder {
 
 footer button {
   border-radius: 16px;
-  background-color: #6c5ce7;
+  background-color: var(--dark-purple);
   border: none;
   font-size: 1.5em;
 }
@@ -318,17 +322,17 @@ footer button {
 }
 
 .text-bold-white {
-  color: white;
+  color: var(--white-color);
   font-weight: bold;
 }
 
 .text-white {
-  color: white;
+  color: var(--white-color);
 }
 
 .text-bold-white {
   font-weight: bold;
-  color: white;
+  color: var(--white-color);
 }
 
 .text-bold {
@@ -336,22 +340,22 @@ footer button {
 }
 
 .text-color-purple {
-  color: #6c5ce7;
+  color: var(--dark-purple);
 }
 
 .text-color-bold-purple {
-  color: #6c5ce7;
+  color: var(--dark-purple);
   font-weight: bold;
 }
 
 .text-color-pink {
-  color: #e84393;
+  color: var(--pink);
 }
 
 .text-yellow {
-  color: #fdcb6e;
+  color: var(--yellow);
 }
 
 .text-gray {
-  color: #adadad;
+  color: var(--light-gray-color);
 }
