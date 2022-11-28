@@ -1,0 +1,16 @@
+.card {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    .image {
+        width: 100%;
+    }
+
+    .nameDesc {
+        padding: 20px;
+    }
+}
