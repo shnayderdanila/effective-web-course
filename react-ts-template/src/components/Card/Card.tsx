@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import { ICard } from 'types/card';
 
 import classes from './Card.module.scss';
@@ -11,13 +11,13 @@ interface ICard1 {
 
 const Card: FC<ICard1> = ({ card }) => {
   return (
-    <Paper className={classes.card}>
+    <Box className={classes.card}>
       <img src={card.image} alt=" " className={classes.image} />
       <div className={classes.nameDesc}>
-        <p>Name</p>
-        <p>Desc</p>
+        <p>{card.name}</p>
+        <p>{card.description}</p>
       </div>
-    </Paper>
+    </Box>
   );
 };
 

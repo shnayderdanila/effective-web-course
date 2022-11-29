@@ -1,9 +1,13 @@
 .card {
-  width: 270px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+
+  width: 270px;
+  margin: 30px 15px;
+
+  border: 2px solid black;
 
   .image {
     width: 100%;
