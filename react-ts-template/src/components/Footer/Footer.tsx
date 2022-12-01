@@ -6,11 +6,11 @@ const Footer: FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <img src="/marvel_logo.svg" alt="marvel" className={classes.logo} />
-      <p>Data provided by Marvel.© ${currentYear} MARVEL</p>
+      <p>Data provided by Marvel.© {currentYear} MARVEL</p>
       <p>developer.marvel.com</p>
-    </div>
+    </footer>
   );
 };
 

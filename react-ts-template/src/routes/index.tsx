@@ -1,8 +1,11 @@
 import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
+import PageContainer from 'components/PageContainer';
+
 import { characters } from './Characters';
-import PageContainer from './PageContainer';
+import { comics } from './Comics';
+import { series } from './Series';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +23,14 @@ const router = createBrowserRouter([
     path: '/comics',
     element: <PageContainer />,
     loader: () => {
-      return characters;
+      return comics;
+    }
+  },
+  {
+    path: '/series',
+    element: <PageContainer />,
+    loader: () => {
+      return series;
     }
   }
 ]);
