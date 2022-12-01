@@ -11,12 +11,16 @@
   }
 
   .search_button {
-    padding: 0;
     width: 150px;
+    padding: 0;
+
     outline: none;
     border: none;
+
     border-radius: 10px;
+
     color: $color-white;
     background-color: $color-orange;
+    font-size: inherit;
   }
 }

@@ -5,7 +5,7 @@ export const characters: ICard[] = [
     image: 'src/assets/characters/spider.jpg',
     name: 'Spider-Man',
     description:
-      'Emerging from a universe in need of a new Spider-Man, a Brooklyn teen named Miles Morales rose to the challenge. Reluctant at first, he quickly earned the mantle of a Super Hero.'
+      'Emerging from a universe in need of a new Spider-Man, a Brooklyn teen named Miles Morales rose to the challenge.'
   },
   {
     image: 'src/assets/characters/panther.jpg',

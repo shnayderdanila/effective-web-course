@@ -4,15 +4,16 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  background-color: $color-grey;
-  color: $color-white;
+
   flex: 0 0 auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
+  padding: 30px;
+
+  color: $color-white;
+  background-color: $color-grey;
 
   .logo {
+    padding: 0;
     max-width: 200px;
-    max-height: 70px;
   }
 }
