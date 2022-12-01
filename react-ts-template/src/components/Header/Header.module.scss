@@ -1,12 +1,15 @@
 @import 'src/styles';
 
 .toolbar {
-  background-color: $color-red;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 30px 10px 30px;
+
+  background-color: $color-red;
   flex: 0 0 auto;
+
+  padding: 10px 30px 10px 30px;
+
   .logo {
     max-width: 200px;
     max-height: 70px;
@@ -19,8 +22,14 @@
     align-items: center;
     min-width: 300px;
 
-    .orangeText {
+    .link {
       color: $color-orange;
+      text-decoration: none;
+    }
+
+    .link_current {
+      color: $color-orange;
+      text-decoration: underline;
     }
   }
 }
