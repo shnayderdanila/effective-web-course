@@ -13,10 +13,10 @@ const Card: FC<ICard1> = ({ card }) => {
   return (
     <Box className={classes.card}>
       <img src={card.image} alt=" " className={classes.image} />
-      <div className={classes.nameDesc}>
-        <p>{card.name}</p>
+      <section className={classes.nameDesc}>
+        <h4>{card.name}</h4>
         <p>{card.description}</p>
-      </div>
+      </section>
     </Box>
   );
 };
