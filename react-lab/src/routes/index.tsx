@@ -2,10 +2,7 @@ import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import PageContainer from 'components/PageContainer';
-
-import { characters } from './Characters';
-import { comics } from './Comics';
-import { series } from './Series';
+import { characters, comics, series } from './MarvelDependecies';
 
 const router = createBrowserRouter([
   {
