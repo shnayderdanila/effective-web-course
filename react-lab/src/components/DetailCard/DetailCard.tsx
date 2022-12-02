@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { ICard } from 'types/card';
 import { CardType } from 'types/cardType';
 
-// import classes from './DetailCard.module.scss';
+import classes from './DetailCard.module.scss';
 
 export const DetailCard: FC = () => {
   const data = useLoaderData() as ICard;
@@ -13,25 +13,29 @@ export const DetailCard: FC = () => {
   };
 
   return (
-    <div>
-      <div>
-        <img src={data.image} alt="" />
+    <div className={classes.flex_wrapper}>
+      <div className={classes.card_description}>
+        <img src={data.image} alt={data.name} className={classes.image} />
         <p>{data.description}</p>
       </div>
 
-      <div>
+      <div className={classes.flex_column}>
         {data.type === CardType.CHARACHTERS ? (
           <section>
             <h3>Comics</h3>
             {data.comics?.map((el) => (
-              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+              <Link className={classes.link} to={linkToDetailEntity(el)}>
+                {el.name}
+              </Link>
             ))}
           </section>
         ) : (
           <section>
             <h3>Characters</h3>
             {data.characters?.map((el) => (
-              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+              <Link className={classes.link} to={linkToDetailEntity(el)}>
+                {el.name}
+              </Link>
             ))}
           </section>
         )}
@@ -40,14 +44,18 @@ export const DetailCard: FC = () => {
           <section>
             <h3>Comics</h3>
             {data.comics?.map((el) => (
-              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+              <Link className={classes.link} to={linkToDetailEntity(el)}>
+                {el.name}
+              </Link>
             ))}
           </section>
         ) : (
           <section>
             <h3>Series</h3>
             {data.series?.map((el) => (
-              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+              <Link className={classes.link} to={linkToDetailEntity(el)}>
+                {el.name}
+              </Link>
             ))}
           </section>
         )}

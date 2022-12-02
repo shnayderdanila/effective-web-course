@@ -2,15 +2,20 @@ import { characters } from './Characters';
 import { comics } from './Comics';
 import { series } from './Series';
 
-// spider man
+// Spider man
 characters[0].comics?.push(comics[0]);
 characters[0].series?.push(series[0]);
+characters[0].comics?.push(comics[3]);
+characters[0].series?.push(series[3]);
 
 comics[0].characters?.push(characters[0]);
-characters[0].series?.push(series[0]);
+comics[3].characters?.push(characters[0]);
+comics[0].series?.push(series[0]);
 
 series[0].comics?.push(comics[0]);
+series[0].comics?.push(comics[3]);
 series[0].characters?.push(characters[0]);
+series[3].characters?.push(characters[0]);
 
 // Black panter
 characters[1].comics?.push(comics[1]);
