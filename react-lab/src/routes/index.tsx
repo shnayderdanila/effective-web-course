@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import PageContainer from 'components/PageContainer';
+import PageEntity from 'routes/PageEntity';
 import { characters, comics, series } from './MarvelDependecies';
+import PageDetailEntity from './PageDetailEntity';
 
 const router = createBrowserRouter([
   {
@@ -11,42 +12,42 @@ const router = createBrowserRouter([
   },
   {
     path: '/characters',
-    element: <PageContainer />,
+    element: <PageEntity />,
     loader: () => {
       return characters;
     }
   },
   {
     path: '/characters/:characterid',
-    element: <PageContainer />,
+    element: <PageDetailEntity />,
     loader: ({ params }) => {
       return characters.find((el) => el.id === Number(params.characterid));
     }
   },
   {
     path: '/comics',
-    element: <PageContainer />,
+    element: <PageEntity />,
     loader: () => {
       return comics;
     }
   },
   {
     path: '/comics/:comicsid',
-    element: <PageContainer />,
+    element: <PageDetailEntity />,
     loader: ({ params }) => {
       return comics.find((el) => el.id === Number(params.comicsid));
     }
   },
   {
     path: '/series',
-    element: <PageContainer />,
+    element: <PageEntity />,
     loader: () => {
       return series;
     }
   },
   {
     path: '/series/:seriesid',
-    element: <PageContainer />,
+    element: <PageDetailEntity />,
     loader: ({ params }) => {
       return series.find((el) => el.id === Number(params.seriesid));
     }

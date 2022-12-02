@@ -8,9 +8,9 @@ import { ICard } from 'types/card';
 import { Box, Grid } from '@mui/material';
 import Search from 'components/Search';
 
-import classes from './PageContainer.module.scss';
+import classes from './PageEntity.module.scss';
 
-const PageContainer: FC = () => {
+const PageEntity: FC = () => {
   const loader = useLoaderData() as ICard[];
 
   return (
@@ -33,4 +33,4 @@ const PageContainer: FC = () => {
   );
 };
 
-export default PageContainer;
+export default PageEntity;

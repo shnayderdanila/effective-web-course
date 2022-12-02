@@ -16,4 +16,12 @@
     padding: 0;
     max-width: 200px;
   }
+
+  a {
+    color: $color-white;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
 }

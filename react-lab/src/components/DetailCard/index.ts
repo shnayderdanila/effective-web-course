@@ -1,3 +1,3 @@
-import { DetailCard } from "./DetailCard";
+import { DetailCard } from './DetailCard';
 
 export default DetailCard;

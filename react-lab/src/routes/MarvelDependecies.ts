@@ -6,7 +6,7 @@ import { series } from './Series';
 characters[0].comics?.push(comics[0]);
 characters[0].series?.push(series[0]);
 
-characters[0].characters?.push(characters[0]);
+comics[0].characters?.push(characters[0]);
 characters[0].series?.push(series[0]);
 
 series[0].comics?.push(comics[0]);
@@ -24,7 +24,7 @@ series[1].characters?.push(characters[1]);
 
 // Abomintation
 characters[2].comics?.push(comics[2]);
-characters[2].series?.push(comics[2]);
+characters[2].series?.push(series[2]);
 
 comics[2].characters?.push(characters[2]);
 comics[2].series?.push(series[2]);

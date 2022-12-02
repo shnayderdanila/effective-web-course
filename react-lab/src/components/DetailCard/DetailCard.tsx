@@ -1,33 +1,57 @@
-import React, { FC } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { ICard } from "types/card";
-import { CardType } from "types/cardType";
+import React, { FC } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import { ICard } from 'types/card';
+import { CardType } from 'types/cardType';
 
-import classes from './DetailCard.module.scss';
+// import classes from './DetailCard.module.scss';
 
-export const DetailCard:FC = () => {
-    
-    const data = useLoaderData() as ICard;
+export const DetailCard: FC = () => {
+  const data = useLoaderData() as ICard;
 
-    return (
-        <div>
+  const linkToDetailEntity = (el: ICard) => {
+    return '/'.concat(el.type).concat('/').concat(String(el.id));
+  };
 
-            <div>
-                <img src={data.image} alt="" />
-                <p>{data.description}</p>
-            </div>
+  return (
+    <div>
+      <div>
+        <img src={data.image} alt="" />
+        <p>{data.description}</p>
+      </div>
 
-            <section>
-                <h3>{data.type}</h3>
-                {
-                    data.type === CardType.CHARACHTERS 
-                    ? 
-                    data.comics?.map((el) => <Link to={'/'+el.type+'/'+el.id}/> )  
-                    :
-                    data.series?.map((el) => <Link to={'/'+el.type+'/'+el.id}/> )
-                }
-            </section>
+      <div>
+        {data.type === CardType.CHARACHTERS ? (
+          <section>
+            <h3>Comics</h3>
+            {data.comics?.map((el) => (
+              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+            ))}
+          </section>
+        ) : (
+          <section>
+            <h3>Characters</h3>
+            {data.characters?.map((el) => (
+              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+            ))}
+          </section>
+        )}
 
-        </div>
-    );
-} 
+        {data.type === CardType.SERIES ? (
+          <section>
+            <h3>Comics</h3>
+            {data.comics?.map((el) => (
+              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+            ))}
+          </section>
+        ) : (
+          <section>
+            <h3>Series</h3>
+            {data.series?.map((el) => (
+              <Link to={linkToDetailEntity(el)}>{el.name}</Link>
+            ))}
+          </section>
+        )}
+      </div>
+    </div>
+  );
+};
