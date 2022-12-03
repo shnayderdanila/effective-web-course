@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import PageContainer from 'components/PageContainer';
 
 import { characters } from './Characters';
 import { comics } from './Comics';
+import PageEntity from './PageEntity';
 import { series } from './Series';
 
 const router = createBrowserRouter([
@@ -14,21 +14,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/characters',
-    element: <PageContainer />,
+    element: <PageEntity />,
     loader: () => {
       return characters;
     }
   },
   {
     path: '/comics',
-    element: <PageContainer />,
+    element: <PageEntity />,
     loader: () => {
       return comics;
     }
   },
   {
     path: '/series',
-    element: <PageContainer />,
+    element: <PageEntity />,
     loader: () => {
       return series;
     }
