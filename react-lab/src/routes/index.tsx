@@ -1,9 +1,11 @@
 import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
+
 import PageEntity from 'routes/PageEntity';
 import { characters, comics, series } from './MarvelDependecies';
 import PageDetailEntity from './PageDetailEntity';
+
 
 const router = createBrowserRouter([
   {
