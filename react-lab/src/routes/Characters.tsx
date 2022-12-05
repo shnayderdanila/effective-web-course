@@ -10,7 +10,7 @@ export const characters: ICard[] = [
       'Emerging from a universe in need of a new Spider-Man, a Brooklyn teen named Miles Morales rose to the challenge.',
     comics: [],
     series: [],
-    type: CardType.CHARACHTERS
+    type: CardType.CHARACTERS
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ export const characters: ICard[] = [
       'TChalla is the king of the secretive and highly advanced African nation of Wakanda - as well as the powerful warrior known as the Black Panther.',
     comics: [],
     series: [],
-    type: CardType.CHARACHTERS
+    type: CardType.CHARACTERS
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const characters: ICard[] = [
       'Gained his powers after receiving a dose of gamma radiation similar to that which transformed Bruce Banner into the incredible Hulk.',
     comics: [],
     series: [],
-    type: CardType.CHARACHTERS
+    type: CardType.CHARACTERS
   },
   {
     id: 4,
@@ -40,6 +40,6 @@ export const characters: ICard[] = [
       'Genius. Billionaire. Philanthropist. Tony Stark confidence is only matched by his high-flying abilities as the hero called Iron Man.',
     comics: [],
     series: [],
-    type: CardType.CHARACHTERS
+    type: CardType.CHARACTERS
   }
 ];

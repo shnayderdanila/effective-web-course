@@ -20,7 +20,7 @@ export const DetailCard: FC = () => {
       </div>
 
       <div className={classes.flex_column}>
-        {data.type === CardType.CHARACHTERS ? (
+        {data.type === CardType.CHARACTERS ? (
           <section>
             <h3>Comics</h3>
             {data.comics?.map((el) => (

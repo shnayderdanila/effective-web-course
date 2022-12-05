@@ -1,5 +1,5 @@
 export enum CardType {
-  CHARACHTERS = 'characters',
+  CHARACTERS = 'characters',
   SERIES = 'series',
   COMICS = 'comics'
 }

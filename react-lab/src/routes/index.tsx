@@ -6,7 +6,6 @@ import PageEntity from 'routes/PageEntity';
 import { characters, comics, series } from './MarvelDependecies';
 import PageDetailEntity from './PageDetailEntity';
 
-
 const router = createBrowserRouter([
   {
     index: true,
