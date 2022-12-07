@@ -39,34 +39,31 @@ interface CharactersResponse {
   };
 }
 
-export async function getCharacter(offset: number): Promise<ICard[] | null> {
-  try {
-    const response = <ICard[] | null>await axiosInstanse
-      .get<CharactersResponse>('/v1/public/characters', {
-        params: {
-          offset
-        }
-      })
-      .then((characters) => {
-        return characters.data.data.results.map((character) => {
-          return <ICard>{
-            id: character.id,
-            image: character.thumbnail.path,
-            name: character.name,
-            description: character.description,
-            characters: [],
-            series: [],
-            comics: [],
-            type: CardType.CHARACTERS
-          };
-        });
-      })
-      .catch((x) => {
-        console.log(x);
-        return null;
+export function getCharacter(offset: number): Promise<ICard[] | []> {
+  return axiosInstanse
+    .get<CharactersResponse>('/v1/public/characters', {
+      params: {
+        offset
+      }
+    })
+    .then((characters) => {
+      return characters.data.data.results.map((character) => {
+        return <ICard>{
+          id: character.id,
+          image: character.thumbnail.path
+            .concat('/portrait_incredible.')
+            .concat(character.thumbnail.extension),
+          name: character.name,
+          description: character.description,
+          characters: [],
+          series: [],
+          comics: [],
+          type: CardType.CHARACTERS
+        };
       });
-    return response;
-  } catch (error) {
-    return null;
-  }
+    })
+    .catch((x) => {
+      console.log(x);
+      return [];
+    });
 }
