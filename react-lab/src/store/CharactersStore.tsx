@@ -6,7 +6,7 @@ import { configure, makeAutoObservable, runInAction } from 'mobx';
 configure({ enforceActions: 'observed' });
 
 class CharactersStore {
-  character: ICard[] | [] = [];
+  character: ICard[] = [];
 
   offset: number = 1;
 
@@ -14,9 +14,19 @@ class CharactersStore {
     makeAutoObservable(this);
   }
 
+  setOffset = (offset: number) => {
+    this.offset = offset;
+  };
+
+  incrementOffset = () => {
+    this.offset += 1;
+    console.log(this.offset);
+  };
+
   loadCharacters = async (): Promise<void> => {
     try {
       const data = await getCharacter(this.offset);
+
       runInAction(() => {
         this.character = data;
       });

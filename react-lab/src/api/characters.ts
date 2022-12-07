@@ -39,6 +39,7 @@ interface CharactersResponse {
   };
 }
 
+// get from marvel list of characters
 export function getCharacter(offset: number): Promise<ICard[] | []> {
   return axiosInstanse
     .get<CharactersResponse>('/v1/public/characters', {

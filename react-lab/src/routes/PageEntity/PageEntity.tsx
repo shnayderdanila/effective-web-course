@@ -1,35 +1,38 @@
 import React, { FC, useEffect } from 'react';
 
 import Card from 'components/Card';
-import { ICard } from 'types/card';
 import { Grid } from '@mui/material';
 import Search from 'components/Search';
 import PageLayout from 'components/PageLayout';
 import charactersStore from 'store/CharactersStore';
+import { observer } from 'mobx-react-lite';
 
 import classes from './PageEntity.module.scss';
 
-const PageEntity: FC = () => {
+const PageEntity: FC = observer(() => {
   // const loader = useLoaderData() as ICard[];
-  const loader = charactersStore.character as ICard[] | [];
+  const { character, offset } = charactersStore;
 
   useEffect(() => {
-    console.log(loader);
     charactersStore.loadCharacters();
-  }, []);
+  }, [offset]);
 
-  return (
+  return character.length ? (
     <PageLayout>
       <Search />
       <Grid className={classes.cards} container spacing={3}>
-        {loader.map((card) => (
+        {character.map((card) => (
           <Grid item xs={3}>
             <Card card={card} />
           </Grid>
         ))}
       </Grid>
     </PageLayout>
+  ) : (
+    <div>
+      <h2>loading...</h2>
+    </div>
   );
-};
+});
 
 export default PageEntity;
