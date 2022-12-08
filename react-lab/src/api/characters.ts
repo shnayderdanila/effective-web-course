@@ -49,6 +49,7 @@ export function getCharacter(offset: number): Promise<ICard[] | []> {
     })
     .then((characters) => {
       return characters.data.data.results.map((character) => {
+        console.log(character);
         return <ICard>{
           id: character.id,
           image: character.thumbnail.path

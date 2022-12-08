@@ -19,7 +19,7 @@ class CharactersStore {
   };
 
   incrementOffset = () => {
-    this.offset += 1;
+    this.offset += 20;
     console.log(this.offset);
   };
 
@@ -28,7 +28,7 @@ class CharactersStore {
       const data = await getCharacter(this.offset);
 
       runInAction(() => {
-        this.character = data;
+        this.character = [...this.character, ...data];
       });
     } catch (error) {
       console.error(error);

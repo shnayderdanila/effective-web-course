@@ -15,6 +15,14 @@ const Card: FC<ICard1> = ({ card }) => {
     return '/'.concat(el.type).concat('/').concat(String(el.id));
   };
 
+  const maxlength = 90;
+
+  const truncate = (str: string) => {
+    return str.length > maxlength
+      ? str.slice(0, maxlength - 1).concat('…')
+      : str;
+  };
+
   return (
     <Box className={classes.card}>
       <Link to={linkToDetailEntity(card)} className={classes.image}>
@@ -22,7 +30,7 @@ const Card: FC<ICard1> = ({ card }) => {
       </Link>
       <section className={classes.nameDesc}>
         <h4>{card.name}</h4>
-        <p>{card.description}</p>
+        <p>{truncate(card.description)}</p>
       </section>
     </Box>
   );
