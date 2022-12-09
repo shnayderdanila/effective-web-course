@@ -1,5 +1,5 @@
 import { CardType } from 'types/cardType';
-import { ICard } from 'types/card';
+import { Dependecies, ICard } from 'types/card';
 
 import { axiosInstanse } from './helpers/axios';
 
@@ -23,16 +23,21 @@ interface CharactersResponse {
           path: string;
           extension: string;
         };
-        // A resource list containing comics which feature this character
-        comics: {
-          available: number;
-          collectionURI: string;
-        };
+      }
+    ];
+  };
+}
 
-        // A resource list of series in which this character appears
+interface CharacterDetailedResponse {
+  status: string;
+  data: {
+    results: [
+      {
+        comics: {
+          items: Dependecies[];
+        };
         series: {
-          available: number;
-          collectionURI: string;
+          items: Dependecies[];
         };
       }
     ];
@@ -49,7 +54,6 @@ export function getCharacter(offset: number): Promise<ICard[] | []> {
     })
     .then((characters) => {
       return characters.data.data.results.map((character) => {
-        console.log(character);
         return <ICard>{
           id: character.id,
           image: character.thumbnail.path
@@ -67,5 +71,18 @@ export function getCharacter(offset: number): Promise<ICard[] | []> {
     .catch((x) => {
       console.log(x);
       return [];
+    });
+}
+
+export function getCharacterDetails(
+  id: number
+): Promise<{ comics: Dependecies[]; series: Dependecies[] }> {
+  return axiosInstanse
+    .get<CharacterDetailedResponse>(`/v1/public/characters/${id}`)
+    .then((characterDependecies) => {
+      return {
+        comics: characterDependecies.data.data.results[0].comics.items,
+        series: characterDependecies.data.data.results[0].series.items
+      };
     });
 }

@@ -1,18 +1,23 @@
 import React, { FC } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import { ICard } from 'types/card';
+import { Link } from 'react-router-dom';
+import { Dependecies, ICard } from 'types/card';
 import { CardType } from 'types/cardType';
+import { observer } from 'mobx-react-lite';
 
 import classes from './DetailCard.module.scss';
 
-export const DetailCard: FC = () => {
-  const data = useLoaderData() as ICard;
+interface IDetailCardProps {
+  data?: ICard;
+}
 
-  const linkToDetailEntity = (el: ICard) => {
-    return '/'.concat(el.type).concat('/').concat(String(el.id));
+export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
+  const linkToDetailEntity = (el: Dependecies) => {
+    return '/'.concat('/').concat(String(el.name));
   };
 
-  return (
+  console.log(data);
+
+  return data ? (
     <div className={classes.flex_wrapper}>
       <div className={classes.card_description}>
         <img src={data.image} alt={data.name} className={classes.image} />
@@ -20,7 +25,7 @@ export const DetailCard: FC = () => {
       </div>
 
       <div className={classes.flex_column}>
-        {data.type === CardType.CHARACTERS ? (
+        {data?.type === CardType.CHARACTERS ? (
           <section>
             <h3>Comics</h3>
             {data.comics?.map((el) => (
@@ -32,7 +37,7 @@ export const DetailCard: FC = () => {
         ) : (
           <section>
             <h3>Characters</h3>
-            {data.characters?.map((el) => (
+            {data?.characters?.map((el) => (
               <Link className={classes.link} to={linkToDetailEntity(el)}>
                 {el.name}
               </Link>
@@ -61,5 +66,7 @@ export const DetailCard: FC = () => {
         )}
       </div>
     </div>
+  ) : (
+    <></>
   );
-};
+});

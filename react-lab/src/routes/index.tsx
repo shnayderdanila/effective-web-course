@@ -2,8 +2,8 @@ import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import PageEntity from 'routes/PageEntity';
 import PageDetailEntity from './PageDetailEntity';
+import { CharacterPage } from './CharactersPage/CharactersPage';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/characters',
-    element: <PageEntity />
+    element: <CharacterPage />
   },
   {
     path: '/characters/:characterid',
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/comics',
-    element: <PageEntity />
+    element: <CharacterPage />
   },
   {
     path: '/comics/:comicsid',
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/series',
-    element: <PageEntity />
+    element: <CharacterPage />
   },
   {
     path: '/series/:seriesid',
