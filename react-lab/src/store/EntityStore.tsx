@@ -7,13 +7,19 @@ import { CardType } from 'types/cardType';
 configure({ enforceActions: 'observed' });
 
 class EntityStore {
+  constructor(type: CardType) {
+    this.type = type;
+    this.curEntityId = Number(localStorage.getItem(`${this!.type}Id`)) ?? 0;
+    makeAutoObservable(this);
+  }
+
   type: CardType;
 
   total: number = 0;
 
   listData: ICard[] = [];
 
-  curEntityId: number = Number(localStorage.getItem('characterId')) ?? 0;
+  curEntityId: number;
 
   curEntity: ICard | undefined = undefined;
 
@@ -24,11 +30,6 @@ class EntityStore {
   clearDataList: boolean = false;
 
   startWithName: string = '';
-
-  constructor(type: CardType) {
-    this.type = type;
-    makeAutoObservable(this);
-  }
 
   setStartWithName = (query: string) => {
     this.startWithName = query;
@@ -42,7 +43,7 @@ class EntityStore {
 
   setEntityId = (id: number) => {
     this.curEntityId = id;
-    localStorage.setItem('characterId', String(this.curEntityId));
+    localStorage.setItem(`${this.type}Id`, String(this.curEntityId));
   };
 
   incrementOffset = () => {
@@ -66,6 +67,9 @@ class EntityStore {
         const data = await getEntityList(
           this.offset,
           this.startWithName,
+          this.type === CardType.CHARACTERS
+            ? 'nameStartsWith'
+            : 'titleStartsWith',
           this.type
         );
 
@@ -83,7 +87,6 @@ class EntityStore {
   loadDetailEntity = async (): Promise<void> => {
     try {
       const data = await getDetailsEntity(this.curEntityId, this.type);
-
       runInAction(() => {
         this.curEntity = data;
       });

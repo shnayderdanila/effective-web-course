@@ -2,8 +2,12 @@ import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import PageDetailEntity from './PageDetailEntity';
-import { CharacterPage } from './CharactersPage/CharactersPage';
+import { CharacterPageEntity } from './CharactersPage/CharactersPageEntity';
+import { CharactersPageDetail } from './CharactersPage/CharactersPageDetail';
+import { SeriesPageDetail } from './SeriesPage/SeriesPageDetail';
+import { SeriesPageEntity } from './SeriesPage/SeriesPageEntity';
+import { ComicsPageEntity } from './ComicsPage/ComicsPageEntity';
+import { ComicsPageDetail } from './ComicsPage/ComicsPageDetail';
 
 const router = createBrowserRouter([
   {
@@ -12,27 +16,27 @@ const router = createBrowserRouter([
   },
   {
     path: '/characters',
-    element: <CharacterPage />
+    element: <CharacterPageEntity />
   },
   {
     path: '/characters/:characterid',
-    element: <PageDetailEntity />
+    element: <CharactersPageDetail />
   },
   {
     path: '/comics',
-    element: <CharacterPage />
+    element: <ComicsPageEntity />
   },
   {
     path: '/comics/:comicsid',
-    element: <PageDetailEntity />
+    element: <ComicsPageDetail />
   },
   {
     path: '/series',
-    element: <CharacterPage />
+    element: <SeriesPageEntity />
   },
   {
     path: '/series/:seriesid',
-    element: <PageDetailEntity />
+    element: <SeriesPageDetail />
   }
 ]);
 

@@ -1,9 +1,9 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import PageEntity from 'components/PageEntity';
-import { charactersStore } from 'store/EntityStore';
+import { seriesStore } from 'store/EntityStore';
 
-export const CharacterPage: FC = observer(() => {
+export const SeriesPageEntity: FC = observer(() => {
   const {
     listData,
     offset,
@@ -12,7 +12,7 @@ export const CharacterPage: FC = observer(() => {
     incrementOffset,
     setEntityId,
     setStartWithName
-  } = charactersStore;
+  } = seriesStore;
 
   const loadMore = useCallback(() => {
     return setTimeout(() => {

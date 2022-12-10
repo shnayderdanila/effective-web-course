@@ -18,42 +18,46 @@ interface IPage {
   setCurId(id: number): void;
 }
 
-const PageEntity: FC<IPage> = observer(
-  ({ data, incrementOffset, setCurId, setStartWith, startWithName }) => {
-    const MyList = styled.div`
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    `;
+const PageEntity: FC<IPage> = ({
+  data,
+  incrementOffset,
+  setCurId,
+  setStartWith,
+  startWithName
+}) => {
+  const MyList = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  `;
 
-    return (
-      <PageLayout>
-        {data.length ? (
-          <>
-            <Search startWithName={startWithName} setStartWith={setStartWith} />
-            <VirtuosoGrid
-              components={{
-                Item: Grid,
-                List: MyList as ComponentType<
-                  GridListProps & { context?: unknown }
-                >,
-                Footer: () => <Loader />,
-                ScrollSeekPlaceholder: () => <Grid item xs={3} />
-              }}
-              overscan={200}
-              data={data}
-              endReached={incrementOffset}
-              itemContent={(index, item) => (
-                <Card key={item.id} card={item} setId={setCurId} />
-              )}
-            />
-          </>
-        ) : (
-          <Loader />
-        )}
-      </PageLayout>
-    );
-  }
-);
+  return (
+    <PageLayout>
+      {data.length ? (
+        <>
+          <Search startWithName={startWithName} setStartWith={setStartWith} />
+          <VirtuosoGrid
+            components={{
+              Item: Grid,
+              List: MyList as ComponentType<
+                GridListProps & { context?: unknown }
+              >,
+              Footer: () => <Loader />,
+              ScrollSeekPlaceholder: () => <Grid item xs={3} />
+            }}
+            overscan={200}
+            data={data}
+            endReached={incrementOffset}
+            itemContent={(index, item) => (
+              <Card key={item.id} card={item} setId={setCurId} />
+            )}
+          />
+        </>
+      ) : (
+        <Loader />
+      )}
+    </PageLayout>
+  );
+};
 
 export default PageEntity;

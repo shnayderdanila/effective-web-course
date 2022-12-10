@@ -19,8 +19,11 @@ interface GetEntityListsResponse {
         // The unique ID of the entity resource
         id: number;
 
-        // The name of the entity
-        name: string;
+        // The name of the entity (only character)
+        name?: string;
+
+        // The title of the entity (only comics and series)
+        title?: string;
 
         // A short bio or description of the entity
         description: string;
@@ -66,42 +69,35 @@ function getDependecies(dependecies?: DependeciesResponse[]): Dependecies[] {
 // get from marvel list of entity
 export function getEntityList(
   offset: number,
-  nameStartsWith: string,
+  query: string,
+  fieldStratsWith: string,
   type: CardType
-): Promise<{ data: ICard[]; total: number }> {
+) {
+  const s = fieldStratsWith;
   return axiosInstanse
-    .get<GetEntityListsResponse>(
-      `/v1/public/${type}`,
-      nameStartsWith
-        ? {
-            params: {
-              offset,
-              nameStartsWith
-            }
-          }
-        : {
-            params: {
-              offset
-            }
-          }
-    )
-    .then((characters) => {
+    .get<GetEntityListsResponse>(`/v1/public/${type}`, {
+      params: {
+        offset
+      }
+    })
+    .then((entityList) => {
+      console.log(entityList.data.data.results);
       return {
-        data: characters.data.data.results.map((character) => {
+        data: entityList.data.data.results.map((entity) => {
           return <ICard>{
-            id: character.id,
-            image: character.thumbnail.path
+            id: entity.id,
+            image: entity.thumbnail.path
               .concat('/portrait_incredible.')
-              .concat(character.thumbnail.extension),
-            name: character.name,
-            description: character.description,
+              .concat(entity.thumbnail.extension),
+            name: entity.name ? entity.name : entity.title,
+            description: entity.description ?? '',
             characters: [],
             series: [],
             comics: [],
             type
           };
         }),
-        total: characters.data.data.total
+        total: entityList.data.data.total
       };
     })
     .catch((x) => {
