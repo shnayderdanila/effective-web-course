@@ -1,22 +1,22 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import PageEntity from 'components/PageEntity';
-import charactersStore from 'store/CharactersStore';
+import { charactersStore } from 'store/EntityStore';
 
 export const CharacterPage: FC = observer(() => {
   const {
-    characters,
+    listData,
     offset,
     startWithName,
-    loadCharacters,
+    loadEntities,
     incrementOffset,
-    setCurCharacterId,
+    setEntityId,
     setStartWithName
   } = charactersStore;
 
   const loadMore = useCallback(() => {
     return setTimeout(() => {
-      loadCharacters();
+      loadEntities();
     }, 0);
   }, [startWithName, offset]);
 
@@ -28,9 +28,9 @@ export const CharacterPage: FC = observer(() => {
   return (
     <PageEntity
       startWithName={startWithName}
-      data={characters}
+      data={listData}
       incrementOffset={incrementOffset}
-      setCurId={setCurCharacterId}
+      setCurId={setEntityId}
       setStartWith={setStartWithName}
     />
   );

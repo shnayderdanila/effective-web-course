@@ -1,28 +1,27 @@
 import React, { FC, useCallback, useEffect } from 'react';
 
 import { observer } from 'mobx-react-lite';
-import charactersStore from 'store/CharactersStore';
 import DetailCard from 'components/DetailCard';
 import PageLayout from 'components/PageLayout';
+import { charactersStore } from 'store/EntityStore';
 
 const PageDetailEntity: FC = observer(() => {
-  const { curCharacterId, loadDetailCharacters, curCharacter } =
-    charactersStore;
+  const { curEntityId, loadDetailEntity, curEntity } = charactersStore;
 
   const loadData = useCallback(() => {
     return setTimeout(() => {
-      loadDetailCharacters();
+      loadDetailEntity();
     }, 0);
-  }, [curCharacterId]);
+  }, [curEntityId]);
 
   useEffect(() => {
     const timeout = loadData();
     return () => clearTimeout(timeout);
-  }, [curCharacterId]);
+  }, [curEntityId]);
 
   return (
     <PageLayout>
-      <DetailCard data={curCharacter} />
+      <DetailCard data={curEntity} />
     </PageLayout>
   );
 });

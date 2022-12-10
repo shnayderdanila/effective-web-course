@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import { Box } from '@mui/material';
 import { ICard } from 'types/card';
 import { Link } from 'react-router-dom';
-import charactersStore from 'store/CharactersStore';
 
 import classes from './Card.module.scss';
 
