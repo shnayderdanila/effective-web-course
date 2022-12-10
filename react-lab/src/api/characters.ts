@@ -45,32 +45,48 @@ interface CharacterDetailedResponse {
 }
 
 // get from marvel list of characters
-export function getCharacter(offset: number): Promise<ICard[] | []> {
+export function getCharacters(
+  offset: number,
+  nameStartsWith: string
+): Promise<{ data: ICard[]; total: number }> {
   return axiosInstanse
-    .get<CharactersResponse>('/v1/public/characters', {
-      params: {
-        offset
-      }
-    })
+    .get<CharactersResponse>(
+      '/v1/public/characters',
+      nameStartsWith
+        ? {
+            params: {
+              offset,
+              nameStartsWith
+            }
+          }
+        : {
+            params: {
+              offset
+            }
+          }
+    )
     .then((characters) => {
-      return characters.data.data.results.map((character) => {
-        return <ICard>{
-          id: character.id,
-          image: character.thumbnail.path
-            .concat('/portrait_incredible.')
-            .concat(character.thumbnail.extension),
-          name: character.name,
-          description: character.description,
-          characters: [],
-          series: [],
-          comics: [],
-          type: CardType.CHARACTERS
-        };
-      });
+      return {
+        data: characters.data.data.results.map((character) => {
+          return <ICard>{
+            id: character.id,
+            image: character.thumbnail.path
+              .concat('/portrait_incredible.')
+              .concat(character.thumbnail.extension),
+            name: character.name,
+            description: character.description,
+            characters: [],
+            series: [],
+            comics: [],
+            type: CardType.CHARACTERS
+          };
+        }),
+        total: characters.data.data.total
+      };
     })
     .catch((x) => {
       console.log(x);
-      return [];
+      return { data: [], total: 0 };
     });
 }
 

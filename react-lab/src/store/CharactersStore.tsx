@@ -1,12 +1,14 @@
 import { ICard } from 'types/card';
 
-import { getCharacter, getCharacterDetails } from 'api/characters';
+import { getCharacters, getCharacterDetails } from 'api/characters';
 import { configure, makeAutoObservable, runInAction } from 'mobx';
 
 configure({ enforceActions: 'observed' });
 
 class CharactersStore {
-  character: ICard[] = [];
+  total: number = 0;
+
+  characters: ICard[] = [];
 
   curCharacterId: number = Number(localStorage.getItem('characterId')) ?? 0;
 
@@ -16,16 +18,26 @@ class CharactersStore {
 
   loadDone: boolean = false;
 
+  clearCharacters: boolean = false;
+
+  startWithName: string = '';
+
   constructor() {
     makeAutoObservable(this);
   }
 
   get getCharacterById() {
-    this.curCharacterArrayId = this.character.findIndex(
+    this.curCharacterArrayId = this.characters.findIndex(
       (character) => character.id === this.curCharacterId
     );
-    return this.character[this.curCharacterArrayId];
+    return this.characters[this.curCharacterArrayId];
   }
+
+  setStartWithName = (query: string) => {
+    this.startWithName = query;
+    this.clearCharacters = true;
+    this.loadDone = false;
+  };
 
   setOffset = (offset: number) => {
     this.offset = offset;
@@ -36,6 +48,9 @@ class CharactersStore {
   };
 
   incrementOffset = () => {
+    if (this.offset + 20 > this.total) {
+      this.offset += this.total % this.offset;
+    }
     this.offset += 20;
     this.loadDone = false;
   };
@@ -43,10 +58,17 @@ class CharactersStore {
   loadCharacters = async (): Promise<void> => {
     try {
       if (!this.loadDone) {
-        const data = await getCharacter(this.offset);
+        if (this.clearCharacters) {
+          this.offset = 0;
+          this.characters = [];
+          this.clearCharacters = false;
+        }
+
+        const data = await getCharacters(this.offset, this.startWithName);
 
         runInAction(() => {
-          this.character = [...this.character, ...data];
+          this.characters = [...this.characters, ...data.data];
+          this.total = data.total;
           this.loadDone = true;
         });
       }
@@ -60,8 +82,8 @@ class CharactersStore {
       const data = await getCharacterDetails(this.curCharacterId);
 
       runInAction(() => {
-        this.character[this.curCharacterArrayId].series = data.series;
-        this.character[this.curCharacterArrayId].comics = data.comics;
+        this.characters[this.curCharacterArrayId].series = data.series;
+        this.characters[this.curCharacterArrayId].comics = data.comics;
       });
     } catch (error) {
       console.error(error);

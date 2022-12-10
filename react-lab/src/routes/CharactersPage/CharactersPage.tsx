@@ -5,29 +5,33 @@ import charactersStore from 'store/CharactersStore';
 
 export const CharacterPage: FC = observer(() => {
   const {
-    character,
+    characters,
     offset,
+    startWithName,
     loadCharacters,
     incrementOffset,
-    setCurCharacterId
+    setCurCharacterId,
+    setStartWithName
   } = charactersStore;
 
   const loadMore = useCallback(() => {
     return setTimeout(() => {
       loadCharacters();
     }, 0);
-  }, [offset]);
+  }, [startWithName, offset]);
 
   useEffect(() => {
     const timeout = loadMore();
     return () => clearTimeout(timeout);
-  }, [offset]);
+  }, [startWithName, offset]);
 
   return (
     <PageEntity
-      data={character}
+      startWithName={startWithName}
+      data={characters}
       incrementOffset={incrementOffset}
       setCurId={setCurCharacterId}
+      setStartWith={setStartWithName}
     />
   );
 });

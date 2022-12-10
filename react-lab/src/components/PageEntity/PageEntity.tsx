@@ -11,12 +11,14 @@ import { ICard } from 'types/card';
 
 interface IPage {
   data: ICard[];
+  startWithName: string;
   incrementOffset(): void;
+  setStartWith(query: string): void;
   setCurId(id: number): void;
 }
 
 const PageEntity: FC<IPage> = observer(
-  ({ data, incrementOffset, setCurId }) => {
+  ({ data, incrementOffset, setCurId, setStartWith, startWithName }) => {
     const MyList = styled.div`
       display: flex;
       flex-wrap: wrap;
@@ -27,7 +29,7 @@ const PageEntity: FC<IPage> = observer(
       <PageLayout>
         {data.length ? (
           <>
-            <Search />
+            <Search startWithName={startWithName} setStartWith={setStartWith} />
             <VirtuosoGrid
               components={{
                 Item: Grid,
