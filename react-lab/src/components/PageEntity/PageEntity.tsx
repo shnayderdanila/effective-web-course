@@ -1,10 +1,9 @@
-import React, { ComponentType, FC, useCallback, useEffect } from 'react';
+import React, { ComponentType, FC } from 'react';
 
 import Card from 'components/Card';
 import { Grid } from '@mui/material';
 import Search from 'components/Search';
 import PageLayout from 'components/PageLayout';
-import charactersStore from 'store/CharactersStore';
 import { observer } from 'mobx-react-lite';
 import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
 import styled from '@emotion/styled';
@@ -30,7 +29,6 @@ const PageEntity: FC<IPage> = observer(
           <>
             <Search />
             <VirtuosoGrid
-              style={{ height: '88%' }}
               components={{
                 Item: Grid,
                 List: MyList as ComponentType<

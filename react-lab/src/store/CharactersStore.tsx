@@ -8,11 +8,13 @@ configure({ enforceActions: 'observed' });
 class CharactersStore {
   character: ICard[] = [];
 
-  curCharacterId: number = 0;
+  curCharacterId: number = Number(localStorage.getItem('characterId')) ?? 0;
 
   curCharacterArrayId: number = 0;
 
   offset: number = 0;
+
+  loadDone: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -35,24 +37,28 @@ class CharactersStore {
 
   incrementOffset = () => {
     this.offset += 20;
-    console.log(this.offset);
+    this.loadDone = false;
   };
 
   loadCharacters = async (): Promise<void> => {
     try {
-      const data = await getCharacter(this.offset);
+      if (!this.loadDone) {
+        const data = await getCharacter(this.offset);
 
-      runInAction(() => {
-        this.character = [...this.character, ...data];
-      });
+        runInAction(() => {
+          this.character = [...this.character, ...data];
+          this.loadDone = true;
+        });
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
-  loadDetailChracters = async (): Promise<void> => {
+  loadDetailCharacters = async (): Promise<void> => {
     try {
       const data = await getCharacterDetails(this.curCharacterId);
+
       runInAction(() => {
         this.character[this.curCharacterArrayId].series = data.series;
         this.character[this.curCharacterArrayId].comics = data.comics;

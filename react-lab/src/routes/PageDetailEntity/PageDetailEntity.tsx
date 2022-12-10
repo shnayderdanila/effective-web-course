@@ -6,8 +6,11 @@ import DetailCard from 'components/DetailCard';
 import PageLayout from 'components/PageLayout';
 
 const PageDetailEntity: FC = observer(() => {
-  const { curCharacterId, loadDetailChracters, getCharacterById } =
-    charactersStore;
+  const {
+    curCharacterId,
+    loadDetailCharacters: loadDetailChracters,
+    getCharacterById
+  } = charactersStore;
 
   const loadData = useCallback(() => {
     return setTimeout(() => {
