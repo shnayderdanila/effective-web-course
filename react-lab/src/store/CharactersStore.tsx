@@ -12,7 +12,7 @@ class CharactersStore {
 
   curCharacterId: number = Number(localStorage.getItem('characterId')) ?? 0;
 
-  curCharacterArrayId: number = 0;
+  curCharacter: ICard | undefined = undefined;
 
   offset: number = 0;
 
@@ -24,13 +24,6 @@ class CharactersStore {
 
   constructor() {
     makeAutoObservable(this);
-  }
-
-  get getCharacterById() {
-    this.curCharacterArrayId = this.characters.findIndex(
-      (character) => character.id === this.curCharacterId
-    );
-    return this.characters[this.curCharacterArrayId];
   }
 
   setStartWithName = (query: string) => {
@@ -45,14 +38,16 @@ class CharactersStore {
 
   setCurCharacterId = (id: number) => {
     this.curCharacterId = id;
+    localStorage.setItem('characterId', String(this.curCharacterId));
   };
 
   incrementOffset = () => {
     if (this.offset + 20 > this.total) {
       this.offset += this.total % this.offset;
+    } else {
+      this.offset += 20;
+      this.loadDone = false;
     }
-    this.offset += 20;
-    this.loadDone = false;
   };
 
   loadCharacters = async (): Promise<void> => {
@@ -82,8 +77,7 @@ class CharactersStore {
       const data = await getCharacterDetails(this.curCharacterId);
 
       runInAction(() => {
-        this.characters[this.curCharacterArrayId].series = data.series;
-        this.characters[this.curCharacterArrayId].comics = data.comics;
+        this.curCharacter = data;
       });
     } catch (error) {
       console.error(error);

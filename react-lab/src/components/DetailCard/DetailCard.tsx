@@ -12,10 +12,8 @@ interface IDetailCardProps {
 
 export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
   const linkToDetailEntity = (el: Dependecies) => {
-    return '/'.concat('/').concat(String(el.name));
+    return '/'.concat(`${el.type}`).concat('/').concat(`${el.id}`);
   };
-
-  console.log(data);
 
   return data ? (
     <div className={classes.flex_wrapper}>
@@ -28,40 +26,56 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
         {data?.type === CardType.CHARACTERS ? (
           <section>
             <h3>Comics</h3>
-            {data.comics?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data.comics?.map((el) => (
+                <li key={el.name}>
+                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         ) : (
           <section>
             <h3>Characters</h3>
-            {data?.characters?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data?.characters?.map((el) => (
+                <li key={el.name}>
+                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
 
         {data.type === CardType.SERIES ? (
           <section>
             <h3>Comics</h3>
-            {data.comics?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data.comics?.map((el) => (
+                <li key={el.name}>
+                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         ) : (
           <section>
             <h3>Series</h3>
-            {data.series?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data.series?.map((el) => (
+                <li key={el.name}>
+                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
       </div>

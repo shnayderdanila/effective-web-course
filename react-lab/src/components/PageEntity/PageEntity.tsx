@@ -8,6 +8,7 @@ import { observer } from 'mobx-react-lite';
 import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
 import styled from '@emotion/styled';
 import { ICard } from 'types/card';
+import Loader from 'components/Loader';
 
 interface IPage {
   data: ICard[];
@@ -36,20 +37,19 @@ const PageEntity: FC<IPage> = observer(
                 List: MyList as ComponentType<
                   GridListProps & { context?: unknown }
                 >,
+                Footer: () => <Loader />,
                 ScrollSeekPlaceholder: () => <Grid item xs={3} />
               }}
               overscan={200}
               data={data}
               endReached={incrementOffset}
               itemContent={(index, item) => (
-                <Card card={item} setId={setCurId} />
+                <Card key={item.id} card={item} setId={setCurId} />
               )}
             />
           </>
         ) : (
-          <div>
-            <h2>Loading...</h2>
-          </div>
+          <Loader />
         )}
       </PageLayout>
     );

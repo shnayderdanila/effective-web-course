@@ -1,8 +1,9 @@
 import { CardType } from './cardType';
 
 export interface Dependecies {
+  id: number;
   name: string;
-  resourceURI: string;
+  type: CardType;
 }
 
 export interface ICard {

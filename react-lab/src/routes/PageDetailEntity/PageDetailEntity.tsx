@@ -6,15 +6,12 @@ import DetailCard from 'components/DetailCard';
 import PageLayout from 'components/PageLayout';
 
 const PageDetailEntity: FC = observer(() => {
-  const {
-    curCharacterId,
-    loadDetailCharacters: loadDetailChracters,
-    getCharacterById
-  } = charactersStore;
+  const { curCharacterId, loadDetailCharacters, curCharacter } =
+    charactersStore;
 
   const loadData = useCallback(() => {
     return setTimeout(() => {
-      loadDetailChracters();
+      loadDetailCharacters();
     }, 0);
   }, [curCharacterId]);
 
@@ -25,7 +22,7 @@ const PageDetailEntity: FC = observer(() => {
 
   return (
     <PageLayout>
-      <DetailCard data={getCharacterById} />
+      <DetailCard data={curCharacter} />
     </PageLayout>
   );
 });
