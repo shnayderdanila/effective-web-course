@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Dependecies, ICard } from 'types/card';
 import { CardType } from 'types/cardType';
 import { observer } from 'mobx-react-lite';
+import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
 
 import classes from './DetailCard.module.scss';
 
@@ -11,6 +12,10 @@ interface IDetailCardProps {
 }
 
 export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
+  const { setEntityId: setCharacterId } = charactersStore;
+  const { setEntityId: setComicId } = comicsStore;
+  const { setEntityId: setSerieId } = seriesStore;
+
   const linkToDetailEntity = (el: Dependecies) => {
     return '/'.concat(`${el.type}`).concat('/').concat(`${el.id}`);
   };
@@ -29,7 +34,11 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <ul>
               {data.comics?.map((el) => (
                 <li key={el.name}>
-                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setComicId(el.id)}
+                  >
                     {el.name}
                   </Link>
                 </li>
@@ -42,7 +51,11 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <ul>
               {data?.characters?.map((el) => (
                 <li key={el.name}>
-                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setCharacterId(el.id)}
+                  >
                     {el.name}
                   </Link>
                 </li>
@@ -57,7 +70,11 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <ul>
               {data.comics?.map((el) => (
                 <li key={el.name}>
-                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setComicId(el.id)}
+                  >
                     {el.name}
                   </Link>
                 </li>
@@ -70,7 +87,11 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <ul>
               {data.series?.map((el) => (
                 <li key={el.name}>
-                  <Link className={classes.link} to={linkToDetailEntity(el)}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setSerieId(el.id)}
+                  >
                     {el.name}
                   </Link>
                 </li>

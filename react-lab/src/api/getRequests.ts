@@ -50,7 +50,10 @@ interface GetEntityListsResponse {
 }
 
 // Helper function, not api, get from entity dependecies if exists
-function getDependecies(dependecies?: DependeciesResponse[]): Dependecies[] {
+function getDependecies(
+  cardType: CardType,
+  dependecies?: DependeciesResponse[]
+): Dependecies[] {
   return dependecies
     ? dependecies.map((marvelComics) => {
         return {
@@ -60,7 +63,7 @@ function getDependecies(dependecies?: DependeciesResponse[]): Dependecies[] {
             )
           ),
           name: marvelComics.name,
-          type: CardType.COMICS
+          type: cardType
         };
       })
     : [];
@@ -68,20 +71,12 @@ function getDependecies(dependecies?: DependeciesResponse[]): Dependecies[] {
 
 // get from marvel list of entity
 export function getEntityList(
-  offset: number,
-  query: string,
-  fieldStratsWith: string,
+  params: unknown,
   type: CardType
-) {
-  const s = fieldStratsWith;
+): Promise<{ data: ICard[]; total: number }> {
   return axiosInstanse
-    .get<GetEntityListsResponse>(`/v1/public/${type}`, {
-      params: {
-        offset
-      }
-    })
+    .get<GetEntityListsResponse>(`/v1/public/${type}`, { params })
     .then((entityList) => {
-      console.log(entityList.data.data.results);
       return {
         data: entityList.data.data.results.map((entity) => {
           return <ICard>{
@@ -120,9 +115,11 @@ export function getDetailsEntity(id: number, type: CardType): Promise<ICard> {
           .concat(entity.thumbnail.extension),
         name: entity.name,
         description: entity.description,
-        characters: [...getDependecies(entity.characters?.items)],
-        series: [...getDependecies(entity.comics?.items)],
-        comics: [...getDependecies(entity.series?.items)],
+        characters: [
+          ...getDependecies(CardType.CHARACTERS, entity.characters?.items)
+        ],
+        series: [...getDependecies(CardType.SERIES, entity.series?.items)],
+        comics: [...getDependecies(CardType.COMICS, entity.comics?.items)],
         type
       };
     });

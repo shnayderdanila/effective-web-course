@@ -64,14 +64,24 @@ class EntityStore {
           this.clearDataList = false;
         }
 
-        const data = await getEntityList(
-          this.offset,
-          this.startWithName,
-          this.type === CardType.CHARACTERS
-            ? 'nameStartsWith'
-            : 'titleStartsWith',
-          this.type
-        );
+        let params;
+        if (this.startWithName) {
+          if (this.type === CardType.CHARACTERS) {
+            params = {
+              offset: this.offset,
+              nameStartsWith: this.startWithName
+            };
+          } else {
+            params = {
+              offset: this.offset,
+              titleStartsWith: this.startWithName
+            };
+          }
+        } else {
+          params = { offset: this.offset };
+        }
+
+        const data = await getEntityList(params, this.type);
 
         runInAction(() => {
           this.listData = [...this.listData, ...data.data];
