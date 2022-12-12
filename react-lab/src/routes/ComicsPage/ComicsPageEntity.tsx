@@ -11,7 +11,8 @@ export const ComicsPageEntity: FC = observer(() => {
     loadEntities,
     incrementOffset,
     setEntityId,
-    setStartWithName
+    setStartWithName,
+    isTotal
   } = comicsStore;
 
   const loadMore = useCallback(() => {
@@ -32,6 +33,7 @@ export const ComicsPageEntity: FC = observer(() => {
       incrementOffset={incrementOffset}
       setCurId={setEntityId}
       setStartWith={setStartWithName}
+      isTotal={isTotal}
     />
   );
 });

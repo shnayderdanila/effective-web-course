@@ -4,7 +4,6 @@ import Card from 'components/Card';
 import { Grid } from '@mui/material';
 import Search from 'components/Search';
 import PageLayout from 'components/PageLayout';
-import { observer } from 'mobx-react-lite';
 import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
 import styled from '@emotion/styled';
 import { ICard } from 'types/card';
@@ -16,6 +15,7 @@ interface IPage {
   incrementOffset(): void;
   setStartWith(query: string): void;
   setCurId(id: number): void;
+  get isTotal(): boolean;
 }
 
 const PageEntity: FC<IPage> = ({
@@ -23,7 +23,8 @@ const PageEntity: FC<IPage> = ({
   incrementOffset,
   setCurId,
   setStartWith,
-  startWithName
+  startWithName,
+  isTotal
 }) => {
   const MyList = styled.div`
     display: flex;
@@ -42,7 +43,7 @@ const PageEntity: FC<IPage> = ({
               List: MyList as ComponentType<
                 GridListProps & { context?: unknown }
               >,
-              Footer: () => <Loader />,
+              Footer: () => (isTotal ? <div /> : <Loader />),
               ScrollSeekPlaceholder: () => <Grid item xs={3} />
             }}
             overscan={200}

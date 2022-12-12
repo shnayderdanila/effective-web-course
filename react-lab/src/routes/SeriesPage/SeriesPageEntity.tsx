@@ -11,7 +11,8 @@ export const SeriesPageEntity: FC = observer(() => {
     loadEntities,
     incrementOffset,
     setEntityId,
-    setStartWithName
+    setStartWithName,
+    isTotal
   } = seriesStore;
 
   const loadMore = useCallback(() => {
@@ -32,6 +33,7 @@ export const SeriesPageEntity: FC = observer(() => {
       incrementOffset={incrementOffset}
       setCurId={setEntityId}
       setStartWith={setStartWithName}
+      isTotal={isTotal}
     />
   );
 });

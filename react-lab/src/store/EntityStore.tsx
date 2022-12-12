@@ -1,40 +1,58 @@
-import { ICard } from 'types/card';
-
-import { getEntityList, getDetailsEntity } from 'api/getRequests';
+// mobx
 import { configure, makeAutoObservable, runInAction } from 'mobx';
+
+// api
+import { getEntityList, getDetailsEntity } from 'api/getRequests';
+
+// types
+import { ICard } from 'types/card';
 import { CardType } from 'types/cardType';
+
+// envs
+import { envs } from 'config/environments';
 
 configure({ enforceActions: 'observed' });
 
 class EntityStore {
   constructor(type: CardType) {
     this.type = type;
-    this.curEntityId = Number(localStorage.getItem(`${this!.type}Id`)) ?? 0;
+    this.curEntityId = Number(localStorage.getItem(`${this.type}Id`)) ?? 0;
     makeAutoObservable(this);
   }
 
+  // type entity for storage
   type: CardType;
 
+  // how much entity in BE without pagination
   total: number = 0;
 
+  // list with data from BE
   listData: ICard[] = [];
 
+  // id cur entity in detail card
   curEntityId: number;
 
+  // cur entity in detail card
   curEntity: ICard | undefined = undefined;
 
+  // query param for backend data shift for list entity
   offset: number = 0;
 
+  // query param for find entity by name
+  startWithName: string = '';
+
+  // check that data with cur offset is load
   loadDone: boolean = false;
 
+  // check clear data list
   clearDataList: boolean = false;
-
-  startWithName: string = '';
 
   setStartWithName = (query: string) => {
     this.startWithName = query;
-    this.clearDataList = true;
+
+    this.offset = 0;
     this.loadDone = false;
+    this.listData = [];
   };
 
   setOffset = (offset: number) => {
@@ -42,44 +60,33 @@ class EntityStore {
   };
 
   setEntityId = (id: number) => {
+    if (this.curEntityId !== id) {
+      this.curEntity = this.emptyEntity(id);
+    }
     this.curEntityId = id;
     localStorage.setItem(`${this.type}Id`, String(this.curEntityId));
   };
 
   incrementOffset = () => {
-    if (this.offset + 20 > this.total) {
+    if (this.isTotal) {
+      console.log(this.total);
       this.offset += this.total % this.offset;
+      console.log('loh', this.offset);
     } else {
-      this.offset += 20;
+      this.offset += envs.pageOffset;
       this.loadDone = false;
+      console.log('ne loh', this.offset);
     }
   };
+
+  get isTotal(): boolean {
+    return this.offset + envs.pageOffset > this.total;
+  }
 
   loadEntities = async (): Promise<void> => {
     try {
       if (!this.loadDone) {
-        if (this.clearDataList) {
-          this.offset = 0;
-          this.listData = [];
-          this.clearDataList = false;
-        }
-
-        let params;
-        if (this.startWithName) {
-          if (this.type === CardType.CHARACTERS) {
-            params = {
-              offset: this.offset,
-              nameStartsWith: this.startWithName
-            };
-          } else {
-            params = {
-              offset: this.offset,
-              titleStartsWith: this.startWithName
-            };
-          }
-        } else {
-          params = { offset: this.offset };
-        }
+        const params = this.getQueryParamsForListEntity();
 
         const data = await getEntityList(params, this.type);
 
@@ -104,6 +111,35 @@ class EntityStore {
       console.error(error);
     }
   };
+
+  emptyEntity = (id: number) => {
+    return {
+      id,
+      description: '',
+      name: '',
+      image: '',
+      comics: [],
+      series: [],
+      characters: [],
+      type: this.type
+    };
+  };
+
+  getQueryParamsForListEntity() {
+    if (this.startWithName) {
+      if (this.type === CardType.CHARACTERS) {
+        return {
+          offset: this.offset,
+          nameStartsWith: this.startWithName
+        };
+      }
+      return {
+        offset: this.offset,
+        titleStartsWith: this.startWithName
+      };
+    }
+    return { offset: this.offset };
+  }
 }
 
 export const charactersStore = new EntityStore(CardType.CHARACTERS);
