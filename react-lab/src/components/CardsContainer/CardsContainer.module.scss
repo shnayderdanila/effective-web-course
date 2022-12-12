@@ -1,0 +1,15 @@
+@import 'src/styles';
+
+.scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll_light::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $light-shadow-card;
+}
+
+.scroll_dark::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $dark-shadow-card;
+}

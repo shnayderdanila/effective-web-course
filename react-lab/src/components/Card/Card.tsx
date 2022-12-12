@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { Box } from '@mui/material';
 import { ICard } from 'types/card';
 import { Link } from 'react-router-dom';
+import { ThemeMode } from 'components/Context/ThemeContext';
 
 import classes from './Card.module.scss';
 
@@ -12,6 +13,8 @@ interface ICard1 {
 }
 
 const Card: FC<ICard1> = ({ card, setId }) => {
+  const theme = useContext(ThemeMode);
+
   const linkToDetailEntity = (el: ICard) => {
     return '/'.concat(el.type).concat('/').concat(String(el.id));
   };
@@ -31,7 +34,13 @@ const Card: FC<ICard1> = ({ card, setId }) => {
         className={classes.image}
         onClick={() => setId(card.id)}
       >
-        <img src={card.image} alt={card.name} className={classes.image} />
+        <img
+          src={card.image}
+          alt={card.name}
+          className={`${classes.image} ${
+            theme?.mode === 'dark' ? classes.image_dark : classes.image_light
+          }`}
+        />
       </Link>
       <section className={classes.nameDesc}>
         <h4>{card.name}</h4>

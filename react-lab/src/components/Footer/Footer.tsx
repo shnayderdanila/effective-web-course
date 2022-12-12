@@ -9,7 +9,9 @@ const Footer: FC = () => {
     <footer className={classes.footer}>
       <img src="/marvel_logo.svg" alt="marvel" className={classes.logo} />
       <p>Data provided by Marvel.© {currentYear} MARVEL</p>
-      <a href="https://developer.marvel.com/">developer.marvel.com</a>
+      <a className={classes.footer_link} href="https://developer.marvel.com/">
+        developer.marvel.com
+      </a>
     </footer>
   );
 };

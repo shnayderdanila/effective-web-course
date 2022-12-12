@@ -5,6 +5,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  margin-top: 10px;
 
   height: 520px;
   width: 250px;
@@ -13,7 +14,14 @@
     width: 100%;
     height: 320px;
     background-color: $color-gray;
-    box-shadow: 0px 10px 15px -4px $shadow-card;
+  }
+
+  .image_light {
+    box-shadow: 0px 10px 13px 4px $light-shadow-card;
+  }
+
+  .image_dark {
+    box-shadow: 0px 0px 18px 8px $dark-shadow-card;
   }
 
   .nameDesc {
