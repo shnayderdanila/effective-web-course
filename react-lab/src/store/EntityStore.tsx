@@ -41,11 +41,11 @@ class EntityStore {
   // query param for find entity by name
   startWithName: string = '';
 
-  // check that data with cur offset is load
+  // param for check that data with cur offset is load
   loadDone: boolean = false;
 
-  // check clear data list
-  clearDataList: boolean = false;
+  // param for check error
+  isError: boolean = false;
 
   setStartWithName = (query: string) => {
     this.startWithName = query;
@@ -97,6 +97,9 @@ class EntityStore {
         });
       }
     } catch (error) {
+      runInAction(() => {
+        this.isError = true;
+      });
       console.error(error);
     }
   };
@@ -108,6 +111,9 @@ class EntityStore {
         this.curEntity = data;
       });
     } catch (error) {
+      runInAction(() => {
+        this.isError = true;
+      });
       console.error(error);
     }
   };

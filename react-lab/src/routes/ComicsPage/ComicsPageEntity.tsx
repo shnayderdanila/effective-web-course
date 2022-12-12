@@ -2,6 +2,7 @@ import React, { FC, useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import PageEntity from 'components/PageEntity';
 import { comicsStore } from 'store/EntityStore';
+import { CardType } from 'types/cardType';
 
 export const ComicsPageEntity: FC = observer(() => {
   const {
@@ -13,7 +14,8 @@ export const ComicsPageEntity: FC = observer(() => {
     incrementOffset,
     setEntityId,
     setStartWithName,
-    isTotal
+    isTotal,
+    isError
   } = comicsStore;
 
   const loadMore = useCallback(() => {
@@ -36,6 +38,8 @@ export const ComicsPageEntity: FC = observer(() => {
       setStartWith={setStartWithName}
       isTotal={isTotal}
       loadDone={loadDone}
+      isError={isError}
+      type={CardType.COMICS}
     />
   );
 });

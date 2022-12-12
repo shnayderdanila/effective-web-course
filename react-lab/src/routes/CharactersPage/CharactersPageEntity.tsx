@@ -2,6 +2,7 @@ import React, { FC, useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import PageEntity from 'components/PageEntity';
 import { charactersStore } from 'store/EntityStore';
+import { CardType } from 'types/cardType';
 
 export const CharacterPageEntity: FC = observer(() => {
   const {
@@ -13,7 +14,8 @@ export const CharacterPageEntity: FC = observer(() => {
     setEntityId,
     setStartWithName,
     isTotal,
-    loadDone
+    loadDone,
+    isError
   } = charactersStore;
 
   const loadMore = useCallback(() => {
@@ -36,6 +38,8 @@ export const CharacterPageEntity: FC = observer(() => {
       setStartWith={setStartWithName}
       isTotal={isTotal}
       loadDone={loadDone}
+      isError={isError}
+      type={CardType.CHARACTERS}
     />
   );
 });

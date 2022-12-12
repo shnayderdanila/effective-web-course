@@ -2,6 +2,7 @@ import React, { FC, useCallback, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import PageEntity from 'components/PageEntity';
 import { seriesStore } from 'store/EntityStore';
+import { CardType } from 'types/cardType';
 
 export const SeriesPageEntity: FC = observer(() => {
   const {
@@ -13,7 +14,8 @@ export const SeriesPageEntity: FC = observer(() => {
     incrementOffset,
     setEntityId,
     setStartWithName,
-    isTotal
+    isTotal,
+    isError
   } = seriesStore;
 
   const loadMore = useCallback(() => {
@@ -36,6 +38,8 @@ export const SeriesPageEntity: FC = observer(() => {
       setCurId={setEntityId}
       setStartWith={setStartWithName}
       isTotal={isTotal}
+      isError={isError}
+      type={CardType.SERIES}
     />
   );
 });

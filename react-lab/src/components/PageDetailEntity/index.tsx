@@ -1,3 +1,3 @@
-import PageDetailEntity from './PageDetailEntity';
+import { PageDetailEntity } from './PageDetailEntity';
 
 export default PageDetailEntity;

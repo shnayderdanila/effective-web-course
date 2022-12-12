@@ -94,10 +94,6 @@ export function getEntityList(
         }),
         total: entityList.data.data.total
       };
-    })
-    .catch((x) => {
-      console.log(x);
-      return { data: [], total: 0 };
     });
 }
 
