@@ -6,6 +6,7 @@ import { seriesStore } from 'store/EntityStore';
 export const SeriesPageEntity: FC = observer(() => {
   const {
     listData,
+    loadDone,
     offset,
     startWithName,
     loadEntities,
@@ -30,6 +31,7 @@ export const SeriesPageEntity: FC = observer(() => {
     <PageEntity
       startWithName={startWithName}
       data={listData}
+      loadDone={loadDone}
       incrementOffset={incrementOffset}
       setCurId={setEntityId}
       setStartWith={setStartWithName}

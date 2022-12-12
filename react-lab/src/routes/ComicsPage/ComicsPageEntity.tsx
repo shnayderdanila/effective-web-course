@@ -7,6 +7,7 @@ export const ComicsPageEntity: FC = observer(() => {
   const {
     listData,
     offset,
+    loadDone,
     startWithName,
     loadEntities,
     incrementOffset,
@@ -34,6 +35,7 @@ export const ComicsPageEntity: FC = observer(() => {
       setCurId={setEntityId}
       setStartWith={setStartWithName}
       isTotal={isTotal}
+      loadDone={loadDone}
     />
   );
 });

@@ -12,7 +12,8 @@ export const CharacterPageEntity: FC = observer(() => {
     incrementOffset,
     setEntityId,
     setStartWithName,
-    isTotal
+    isTotal,
+    loadDone
   } = charactersStore;
 
   const loadMore = useCallback(() => {
@@ -34,6 +35,7 @@ export const CharacterPageEntity: FC = observer(() => {
       setCurId={setEntityId}
       setStartWith={setStartWithName}
       isTotal={isTotal}
+      loadDone={loadDone}
     />
   );
 });
