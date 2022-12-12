@@ -34,9 +34,9 @@ const PageEntity: FC<IPage> = ({
 
   return (
     <PageLayout>
-      {data.length ? (
-        <>
-          <Search startWithName={startWithName} setStartWith={setStartWith} />
+      <>
+        <Search startWithName={startWithName} setStartWith={setStartWith} />
+        {data.length ? (
           <VirtuosoGrid
             components={{
               Item: Grid,
@@ -53,10 +53,10 @@ const PageEntity: FC<IPage> = ({
               <Card key={item.id} card={item} setId={setCurId} />
             )}
           />
-        </>
-      ) : (
-        <Loader />
-      )}
+        ) : (
+          <Loader />
+        )}
+      </>
     </PageLayout>
   );
 };

@@ -1,6 +1,7 @@
-import React, { FC, useState, ChangeEvent } from 'react';
-import { TextField } from '@mui/material';
+import React, { FC, ChangeEvent, useCallback, useMemo, useEffect } from 'react';
 
+import { TextField } from '@mui/material';
+import debounce from 'lodash.debounce';
 import classes from './Search.module.scss';
 
 interface ISearch {
@@ -9,11 +10,22 @@ interface ISearch {
 }
 
 export const Search: FC<ISearch> = ({ startWithName, setStartWith }) => {
-  const [searchValue, setSearchValue] = useState(startWithName);
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setStartWith(event.target.value);
+    },
+    []
+  );
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-  };
+  const debouncedResults = useMemo(() => {
+    return debounce(handleInputChange, 3000);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      debouncedResults.cancel();
+    };
+  });
 
   return (
     <div className={classes.search}>
@@ -21,15 +33,8 @@ export const Search: FC<ISearch> = ({ startWithName, setStartWith }) => {
         className={classes.search_input}
         fullWidth
         defaultValue={startWithName}
-        onChange={handleChange}
+        onChange={debouncedResults}
       />
-      <button
-        type="submit"
-        className={classes.search_button}
-        onClick={() => setStartWith(searchValue)}
-      >
-        Search
-      </button>
     </div>
   );
 };
