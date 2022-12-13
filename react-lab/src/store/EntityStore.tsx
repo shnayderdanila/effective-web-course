@@ -71,11 +71,9 @@ class EntityStore {
     if (this.isTotal) {
       console.log(this.total);
       this.offset += this.total % this.offset;
-      console.log('loh', this.offset);
     } else {
       this.offset += envs.pageOffset;
       this.loadDone = false;
-      console.log('ne loh', this.offset);
     }
   };
 
@@ -93,7 +91,6 @@ class EntityStore {
         runInAction(() => {
           this.listData = [...this.listData, ...data.data];
           this.total = data.total;
-          this.loadDone = true;
         });
       }
     } catch (error) {
@@ -101,6 +98,10 @@ class EntityStore {
         this.isError = true;
       });
       console.error(error);
+    } finally {
+      runInAction(() => {
+        this.loadDone = true;
+      });
     }
   };
 

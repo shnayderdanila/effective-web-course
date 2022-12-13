@@ -11,7 +11,6 @@
   padding: 10px 30px;
 
   color: $color-white;
-  background-color: $color-gray;
 
   .logo {
     padding: 0;
@@ -25,4 +24,12 @@
       color: $color-white;
     }
   }
+}
+
+.light {
+  background-color: $color-gray;
+}
+
+.dark {
+  background-color: $color-dark-gray;
 }

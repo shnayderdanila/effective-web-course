@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: $color-red;
   flex: 0 0 auto;
 
   padding: 10px 30px 10px 30px;
@@ -16,7 +15,6 @@
   }
 
   .tollbarBottoms {
-    background-color: $color-red;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,5 +29,22 @@
       color: $color-orange;
       text-decoration: underline;
     }
+
+    .icons_wrapper {
+      .icon_active {
+        display: flex;
+      }
+      .icon_non_active {
+        display: none;
+      }
+    }
   }
+}
+
+.light {
+  background-color: $color-red;
+}
+
+.dark {
+  background-color: $color-dark-red;
 }

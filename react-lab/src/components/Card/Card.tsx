@@ -19,7 +19,7 @@ const Card: FC<ICard1> = ({ card, setId }) => {
     return '/'.concat(el.type).concat('/').concat(String(el.id));
   };
 
-  const maxlength = 90;
+  const maxlength = 70;
 
   const truncate = (str: string) => {
     return str.length > maxlength

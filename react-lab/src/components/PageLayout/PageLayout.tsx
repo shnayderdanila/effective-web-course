@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useContext } from 'react';
+import React, { FC, ReactNode, useContext, useEffect } from 'react';
 
 import Footer from 'components/Footer';
 import Header from 'components/Header';
@@ -14,12 +14,18 @@ interface IChildren {
 const PageLayout: FC<IChildren> = ({ children }) => {
   const theme = useContext(ThemeMode);
 
+  useEffect(() => {
+    if (theme?.mode === 'dark') {
+      document.body.classList.remove(classes.light_mode);
+      document.body.classList.add(classes.dark_mode);
+    } else {
+      document.body.classList.remove(classes.dark_mode);
+      document.body.classList.add(classes.light_mode);
+    }
+  }, [theme?.mode]);
+
   return (
-    <div
-      className={`${classes.wrapper_content} ${
-        theme?.mode === 'dark' ? classes.dark_mode : classes.light_mode
-      }`}
-    >
+    <div className={`${classes.wrapper_content}`}>
       <Header />
       <main className={classes.centered}>
         <Box className={classes.main_content}>{children}</Box>

@@ -1,6 +1,7 @@
 import React, { FC, useContext } from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Slide } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import Brightness3Icon from '@mui/icons-material/Brightness3';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { ThemeMode } from 'components/Context/ThemeContext';
 
@@ -18,10 +19,18 @@ const Header: FC = () => {
   };
 
   return (
-    <header className={classes.toolbar}>
+    <header
+      className={`${classes.toolbar} ${
+        theme?.mode === 'dark' ? classes.dark : classes.light
+      }`}
+    >
       <img src="/marvel_logo.svg" alt="marvel" className={classes.logo} />
 
-      <div className={classes.tollbarBottoms}>
+      <div
+        className={`${classes.tollbarBottoms} ${
+          theme?.mode === 'dark' ? classes.dark : classes.light
+        }`}
+      >
         <nav className={classes.tollbarBottoms}>
           <NavLink
             to="/characters"
@@ -48,9 +57,34 @@ const Header: FC = () => {
             Series
           </NavLink>
         </nav>
-        <IconButton onClick={changeTheme}>
-          <LightModeIcon color="primary" />
-        </IconButton>
+        <div className={classes.icons_wrapper}>
+          <Slide
+            className={`${
+              theme?.mode === 'light'
+                ? classes.icon_active
+                : classes.icon_non_active
+            }`}
+            direction="down"
+            in={theme?.mode === 'light'}
+          >
+            <IconButton onClick={changeTheme}>
+              <LightModeIcon color="primary" />
+            </IconButton>
+          </Slide>
+          <Slide
+            className={`${
+              theme?.mode === 'dark'
+                ? classes.icon_active
+                : classes.icon_non_active
+            }`}
+            direction="down"
+            in={theme?.mode === 'dark'}
+          >
+            <IconButton onClick={changeTheme}>
+              <Brightness3Icon color="primary" />
+            </IconButton>
+          </Slide>
+        </div>
       </div>
     </header>
   );

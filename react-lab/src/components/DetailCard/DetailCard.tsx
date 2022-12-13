@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Dependecies, ICard } from 'types/card';
 import { CardType } from 'types/cardType';
 import { observer } from 'mobx-react-lite';
 import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
+import { ThemeMode } from 'components/Context/ThemeContext';
 
 import classes from './DetailCard.module.scss';
 
@@ -12,6 +13,7 @@ interface IDetailCardProps {
 }
 
 export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
+  const theme = useContext(ThemeMode);
   const { setEntityId: setCharacterId } = charactersStore;
   const { setEntityId: setComicId } = comicsStore;
   const { setEntityId: setSerieId } = seriesStore;
@@ -23,7 +25,13 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
   return data ? (
     <div className={classes.flex_wrapper}>
       <div className={classes.card_description}>
-        <img src={data.image} alt={data.name} className={classes.image} />
+        <img
+          src={data.image}
+          alt={data.name}
+          className={`${classes.image} ${
+            theme?.mode === 'dark' ? classes.image_dark : classes.image_light
+          }`}
+        />
         <p>{data.description}</p>
       </div>
 

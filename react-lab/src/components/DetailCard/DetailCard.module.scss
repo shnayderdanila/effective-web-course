@@ -13,20 +13,29 @@
     .image {
       height: 650px;
       margin-bottom: 15px;
+    }
 
-      box-shadow: 0px 12px 28px -3px $color-black;
+    .image_light {
+      box-shadow: 0px 12px 28px 4px $light-shadow-card;
+    }
+
+    .image_dark {
+      box-shadow: 0px 12px 28px 4px $dark-shadow-card;
     }
   }
-
-  section,
-  h3 {
-    margin-bottom: 10px;
-
-    a {
-      margin-right: 10px;
+  .flex_column {
+    display: flex;
+    flex-direction: column;
+    section,
+    h3 {
       margin-bottom: 10px;
-      font-weight: normal;
-      text-decoration: underline;
+
+      a {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-weight: normal;
+        text-decoration: underline;
+      }
     }
   }
 }
