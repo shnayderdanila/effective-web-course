@@ -48,11 +48,13 @@ class EntityStore {
   isError: boolean = false;
 
   setStartWithName = (query: string) => {
-    this.startWithName = query;
+    if (query !== this.startWithName) {
+      this.startWithName = query;
 
-    this.offset = 0;
-    this.loadDone = false;
-    this.listData = [];
+      this.offset = 0;
+      this.loadDone = false;
+      this.listData = [];
+    }
   };
 
   setOffset = (offset: number) => {
@@ -68,8 +70,7 @@ class EntityStore {
   };
 
   incrementOffset = () => {
-    if (this.isTotal) {
-      console.log(this.total);
+    if (this.isTotal && this.total > envs.pageOffset) {
       this.offset += this.total % this.offset;
     } else {
       this.offset += envs.pageOffset;

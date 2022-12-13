@@ -4,7 +4,7 @@ import { Dependecies, ICard } from 'types/card';
 import { CardType } from 'types/cardType';
 import { observer } from 'mobx-react-lite';
 import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
-import { ThemeMode } from 'components/Context/ThemeContext';
+import { ThemeMode } from 'context/ThemeContext';
 
 import classes from './DetailCard.module.scss';
 
@@ -41,7 +41,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <h3>Comics</h3>
             <ul>
               {data.comics?.map((el) => (
-                <li key={el.name}>
+                <li key={el.id}>
                   <Link
                     className={classes.link}
                     to={linkToDetailEntity(el)}
@@ -58,7 +58,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <h3>Characters</h3>
             <ul>
               {data?.characters?.map((el) => (
-                <li key={el.name}>
+                <li key={el.id}>
                   <Link
                     className={classes.link}
                     to={linkToDetailEntity(el)}
@@ -77,7 +77,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <h3>Comics</h3>
             <ul>
               {data.comics?.map((el) => (
-                <li key={el.name}>
+                <li key={el.id}>
                   <Link
                     className={classes.link}
                     to={linkToDetailEntity(el)}
@@ -94,7 +94,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
             <h3>Series</h3>
             <ul>
               {data.series?.map((el) => (
-                <li key={el.name}>
+                <li key={el.id}>
                   <Link
                     className={classes.link}
                     to={linkToDetailEntity(el)}

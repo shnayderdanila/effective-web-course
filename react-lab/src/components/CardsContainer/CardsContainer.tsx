@@ -5,7 +5,7 @@ import Card from 'components/Card';
 import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
 import { Grid } from '@mui/material';
 import Loader from 'components/Loader';
-import { ThemeMode } from 'components/Context/ThemeContext';
+import { ThemeMode } from 'context/ThemeContext';
 
 import classes from './CardsContainer.module.scss';
 

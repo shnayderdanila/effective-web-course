@@ -10,7 +10,8 @@ import React, {
 import { TextField } from '@mui/material';
 import debounce from 'lodash.debounce';
 import { CardType } from 'types/cardType';
-import { ThemeMode } from 'components/Context/ThemeContext';
+import { ThemeMode } from 'context/ThemeContext';
+
 import classes from './Search.module.scss';
 
 interface ISearch {

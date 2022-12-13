@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { ThemeMode } from 'components/Context/ThemeContext';
+import { ThemeMode } from 'context/ThemeContext';
 
 import classes from './Footer.module.scss';
 

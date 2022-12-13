@@ -3,7 +3,7 @@ import React, { FC, useContext } from 'react';
 import { Box } from '@mui/material';
 import { ICard } from 'types/card';
 import { Link } from 'react-router-dom';
-import { ThemeMode } from 'components/Context/ThemeContext';
+import { ThemeMode } from 'context/ThemeContext';
 
 import classes from './Card.module.scss';
 

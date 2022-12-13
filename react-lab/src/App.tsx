@@ -3,7 +3,7 @@ import { RouterProvider } from 'react-router-dom';
 import { createTheme } from '@mui/material/styles';
 import router from 'routes';
 import { ThemeProvider } from '@mui/system';
-import { ThemeMode } from 'components/Context/ThemeContext';
+import { ThemeMode } from 'context/ThemeContext';
 
 // theme for change color mui components
 const muiTheme = createTheme({

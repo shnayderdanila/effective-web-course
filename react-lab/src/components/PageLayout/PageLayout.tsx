@@ -3,7 +3,7 @@ import React, { FC, ReactNode, useContext, useEffect } from 'react';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { Box } from '@mui/material';
-import { ThemeMode } from 'components/Context/ThemeContext';
+import { ThemeMode } from 'context/ThemeContext';
 
 import classes from './PageLayout.module.scss';
 
