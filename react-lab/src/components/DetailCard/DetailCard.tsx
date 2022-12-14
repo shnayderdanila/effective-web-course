@@ -1,11 +1,20 @@
 import React, { FC, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Dependecies, ICard } from 'types/card';
-import { CardType } from 'types/cardType';
+
+// Store
 import { observer } from 'mobx-react-lite';
 import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
+
+// react router
+import { Link } from 'react-router-dom';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// Types
+import { CardType } from 'types/cardType';
+import { Dependecies, ICard } from 'types/card';
+
+// Styles
 import classes from './DetailCard.module.scss';
 
 interface IDetailCardProps {

@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
 
+// Components
 import Search from 'components/Search';
 import PageLayout from 'components/PageLayout';
-import { ICard } from 'types/card';
 import Loader from 'components/Loader';
 import CardsContainer from 'components/CardsContainer';
+
+// Types
+import { ICard } from 'types/card';
 import { CardType } from 'types/cardType';
 
 interface IPage {

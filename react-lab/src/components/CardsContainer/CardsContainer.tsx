@@ -1,12 +1,25 @@
 import React, { ComponentType, FC, useContext } from 'react';
-import styled from '@emotion/styled';
-import { ICard } from 'types/card';
-import Card from 'components/Card';
-import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
+
+// Mui
 import { Grid } from '@mui/material';
+
+// Components
+import Card from 'components/Card';
 import Loader from 'components/Loader';
+
+// Virtuoso
+import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// Types
+import { ICard } from 'types/card';
+
+// Styled
+import styled from '@emotion/styled';
+
+// Styles
 import classes from './CardsContainer.module.scss';
 
 const MyList = styled.div`

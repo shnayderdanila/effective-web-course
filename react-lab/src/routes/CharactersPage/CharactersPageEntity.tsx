@@ -1,7 +1,13 @@
 import React, { FC, useCallback, useEffect } from 'react';
-import { observer } from 'mobx-react-lite';
+
+// Components
 import PageEntity from 'components/PageEntity';
+
+// Store
+import { observer } from 'mobx-react-lite';
 import { charactersStore } from 'store/EntityStore';
+
+// Types
 import { CardType } from 'types/cardType';
 
 export const CharacterPageEntity: FC = observer(() => {

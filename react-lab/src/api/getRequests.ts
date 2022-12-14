@@ -1,15 +1,17 @@
+// Types
 import { CardType } from 'types/cardType';
 import { Dependecies, ICard } from 'types/card';
 
+// axios
 import { axiosInstanse } from './helpers/axios';
 
-// interface for entity dependecies from marvel (comics, characters, series)
+// Interface for entity dependecies from marvel (comics, characters, series)
 interface DependeciesResponse {
   name: string;
   resourceURI: string;
 }
 
-// interface for get list entity from marvel
+// Interface for get list entity from marvel
 interface GetEntityListsResponse {
   status: string;
   data: {
@@ -49,7 +51,8 @@ interface GetEntityListsResponse {
   };
 }
 
-// Helper function, not api, get from entity dependecies if exists
+// Helper function, not api
+// Get from entity dependecies if exists
 function getDependecies(
   cardType: CardType,
   dependecies?: DependeciesResponse[]
@@ -69,7 +72,7 @@ function getDependecies(
     : [];
 }
 
-// get from marvel list of entity
+// Get from marvel list of entity
 export function getEntityList(
   params: unknown,
   type: CardType
@@ -97,7 +100,7 @@ export function getEntityList(
     });
 }
 
-// get from marvel entity with details
+// Get from marvel entity with details
 export function getDetailsEntity(id: number, type: CardType): Promise<ICard> {
   return axiosInstanse
     .get<GetEntityListsResponse>(`/v1/public/${type}/${id}`)

@@ -1,10 +1,16 @@
 import React, { FC, ReactNode, useContext, useEffect } from 'react';
 
-import Footer from 'components/Footer';
-import Header from 'components/Header';
+// Mui
 import { Box } from '@mui/material';
+
+// Components
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// Styles
 import classes from './PageLayout.module.scss';
 
 interface IChildren {

@@ -1,10 +1,17 @@
 import React, { FC, useContext } from 'react';
+
+// Mui
 import { IconButton, Slide } from '@mui/material';
-import { NavLink } from 'react-router-dom';
 import Brightness3Icon from '@mui/icons-material/Brightness3';
 import LightModeIcon from '@mui/icons-material/LightMode';
+
+// react router
+import { NavLink } from 'react-router-dom';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// Styles
 import classes from './Header.module.scss';
 
 const Header: FC = () => {

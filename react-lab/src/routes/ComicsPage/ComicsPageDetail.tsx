@@ -1,8 +1,13 @@
 import React, { FC, useCallback, useEffect } from 'react';
 
+// Components
 import PageDetailEntity from 'components/PageDetailEntity';
+
+// Store
 import { observer } from 'mobx-react-lite';
 import { comicsStore } from 'store/EntityStore';
+
+// Types
 import { CardType } from 'types/cardType';
 
 export const ComicsPageDetail: FC = observer(() => {

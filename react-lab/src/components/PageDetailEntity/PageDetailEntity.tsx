@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
 
-import { observer } from 'mobx-react-lite';
+// Components
 import DetailCard from 'components/DetailCard';
 import PageLayout from 'components/PageLayout';
+
+// Store
+import { observer } from 'mobx-react-lite';
+
+// Types
 import { ICard } from 'types/card';
 import { CardType } from 'types/cardType';
 

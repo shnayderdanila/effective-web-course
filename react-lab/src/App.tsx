@@ -1,8 +1,14 @@
 import React, { FC, useState } from 'react';
-import { RouterProvider } from 'react-router-dom';
+
+// Mui
 import { createTheme } from '@mui/material/styles';
-import router from 'routes';
 import { ThemeProvider } from '@mui/system';
+
+// react router
+import router from 'routes';
+import { RouterProvider } from 'react-router-dom';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
 // theme for change color mui components

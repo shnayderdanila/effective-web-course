@@ -1,6 +1,9 @@
 import React, { FC, useContext } from 'react';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// Styles
 import classes from './Footer.module.scss';
 
 const Footer: FC = () => {

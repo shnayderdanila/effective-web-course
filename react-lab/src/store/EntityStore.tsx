@@ -1,5 +1,12 @@
 // mobx
-import { configure, makeAutoObservable, runInAction } from 'mobx';
+import {
+  configure,
+  makeObservable,
+  observable,
+  action,
+  computed,
+  runInAction
+} from 'mobx';
 
 // api
 import { getEntityList, getDetailsEntity } from 'api/getRequests';
@@ -17,7 +24,22 @@ class EntityStore {
   constructor(type: CardType) {
     this.type = type;
     this.curEntityId = Number(localStorage.getItem(`${this.type}Id`)) ?? 0;
-    makeAutoObservable(this);
+    makeObservable(this, {
+      total: observable,
+      listData: observable,
+      curEntityId: observable,
+      curEntity: observable,
+      offset: observable,
+      startWithName: observable,
+      loadDone: observable,
+      isError: observable,
+      isTotal: computed,
+      setStartWithName: action,
+      setEntityId: action,
+      incrementOffset: action,
+      loadEntities: action,
+      loadDetailEntity: action
+    });
   }
 
   // type entity for storage
@@ -47,6 +69,10 @@ class EntityStore {
   // param for check error
   isError: boolean = false;
 
+  get isTotal(): boolean {
+    return this.offset + envs.pageOffset > this.total;
+  }
+
   setStartWithName = (query: string) => {
     if (query !== this.startWithName) {
       this.startWithName = query;
@@ -55,10 +81,6 @@ class EntityStore {
       this.loadDone = false;
       this.listData = [];
     }
-  };
-
-  setOffset = (offset: number) => {
-    this.offset = offset;
   };
 
   setEntityId = (id: number) => {
@@ -77,10 +99,6 @@ class EntityStore {
       this.loadDone = false;
     }
   };
-
-  get isTotal(): boolean {
-    return this.offset + envs.pageOffset > this.total;
-  }
 
   loadEntities = async (): Promise<void> => {
     try {

@@ -7,11 +7,19 @@ import React, {
   useContext
 } from 'react';
 
+// Mui
 import { TextField } from '@mui/material';
+
+// lodash
 import debounce from 'lodash.debounce';
-import { CardType } from 'types/cardType';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// Types
+import { CardType } from 'types/cardType';
+
+// Styles
 import classes from './Search.module.scss';
 
 interface ISearch {

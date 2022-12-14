@@ -1,10 +1,16 @@
 import React, { FC, useContext } from 'react';
 
+// Mui
 import { Box } from '@mui/material';
+
+// Types
 import { ICard } from 'types/card';
 import { Link } from 'react-router-dom';
+
+// Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// Styles
 import classes from './Card.module.scss';
 
 interface ICard1 {
