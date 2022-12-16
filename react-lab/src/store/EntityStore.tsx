@@ -23,6 +23,9 @@ configure({ enforceActions: 'observed' });
 class EntityStore {
   constructor(type: CardType) {
     this.type = type;
+    this.listFavorites = JSON.parse(
+      localStorage.getItem(`favorites${this.type}`) ?? '[]'
+    );
     this.curEntityId = Number(localStorage.getItem(`${this.type}Id`)) ?? 0;
     makeObservable(this, {
       total: observable,
@@ -36,6 +39,8 @@ class EntityStore {
       isError: observable,
       isTotal: computed,
       setStartWithName: action,
+      addFavorite: action,
+      removeFavorite: action,
       setEntityId: action,
       incrementOffset: action,
       loadEntities: action,
@@ -53,9 +58,7 @@ class EntityStore {
   listData: ICard[] = [];
 
   // list of favorites entity
-  listFavorites: ICard[] = JSON.parse(
-    localStorage.getItem('favorites') ?? '[]'
-  );
+  listFavorites: ICard[];
 
   // id cur entity in detail card
   curEntityId: number;
@@ -80,8 +83,12 @@ class EntityStore {
   }
 
   addFavorite = (card: ICard) => {
-    this.listFavorites.push(card);
-    localStorage.setItem('favorites', JSON.stringify(this.listFavorites));
+    this.listFavorites.push({ ...card, favorite: true });
+    localStorage.setItem(
+      `favorites${this.type}`,
+      JSON.stringify(this.listFavorites)
+    );
+    console.log(this.listFavorites);
   };
 
   removeFavorite = (card: ICard) => {
@@ -89,9 +96,10 @@ class EntityStore {
       this.listFavorites.findIndex((entity) => entity.id === card.id),
       1
     );
-    console.log(this.listFavorites);
-    localStorage.clear();
-    localStorage.setItem('favorites', JSON.stringify(this.listFavorites));
+    localStorage.setItem(
+      `favorites${this.type}`,
+      JSON.stringify(this.listFavorites)
+    );
   };
 
   setStartWithName = (query: string) => {
