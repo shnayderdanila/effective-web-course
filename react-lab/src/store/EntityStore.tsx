@@ -27,6 +27,7 @@ class EntityStore {
     makeObservable(this, {
       total: observable,
       listData: observable,
+      listFavorites: observable,
       curEntityId: observable,
       curEntity: observable,
       offset: observable,
@@ -51,6 +52,11 @@ class EntityStore {
   // list with data from BE
   listData: ICard[] = [];
 
+  // list of favorites entity
+  listFavorites: ICard[] = JSON.parse(
+    localStorage.getItem('favorites') ?? '[]'
+  );
+
   // id cur entity in detail card
   curEntityId: number;
 
@@ -72,6 +78,21 @@ class EntityStore {
   get isTotal(): boolean {
     return this.offset + envs.pageOffset > this.total;
   }
+
+  addFavorite = (card: ICard) => {
+    this.listFavorites.push(card);
+    localStorage.setItem('favorites', JSON.stringify(this.listFavorites));
+  };
+
+  removeFavorite = (card: ICard) => {
+    this.listFavorites.splice(
+      this.listFavorites.findIndex((entity) => entity.id === card.id),
+      1
+    );
+    console.log(this.listFavorites);
+    localStorage.clear();
+    localStorage.setItem('favorites', JSON.stringify(this.listFavorites));
+  };
 
   setStartWithName = (query: string) => {
     if (query !== this.startWithName) {
@@ -108,7 +129,14 @@ class EntityStore {
         const data = await getEntityList(params, this.type);
 
         runInAction(() => {
-          this.listData = [...this.listData, ...data.data];
+          this.listData = [
+            ...this.listData,
+            ...data.data.map((el) => {
+              return this.listFavorites.find((fav) => fav.id === el.id)
+                ? { ...el, favorite: true }
+                : el;
+            })
+          ];
           this.total = data.total;
         });
       }
@@ -147,7 +175,8 @@ class EntityStore {
       comics: [],
       series: [],
       characters: [],
-      type: this.type
+      type: this.type,
+      favorite: false
     };
   };
 

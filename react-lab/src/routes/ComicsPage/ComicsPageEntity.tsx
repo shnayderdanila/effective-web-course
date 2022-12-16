@@ -21,7 +21,9 @@ export const ComicsPageEntity: FC = observer(() => {
     setEntityId,
     setStartWithName,
     isTotal,
-    isError
+    isError,
+    addFavorite,
+    removeFavorite
   } = comicsStore;
 
   const loadMore = useCallback(() => {
@@ -45,6 +47,8 @@ export const ComicsPageEntity: FC = observer(() => {
       isTotal={isTotal}
       loadDone={loadDone}
       isError={isError}
+      addFavorite={addFavorite}
+      removeFavorite={removeFavorite}
       type={CardType.COMICS}
     />
   );

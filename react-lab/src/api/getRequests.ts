@@ -92,7 +92,8 @@ export function getEntityList(
             characters: [],
             series: [],
             comics: [],
-            type
+            type,
+            favorite: false
           };
         }),
         total: entityList.data.data.total
@@ -119,7 +120,8 @@ export function getDetailsEntity(id: number, type: CardType): Promise<ICard> {
         ],
         series: [...getDependecies(CardType.SERIES, entity.series?.items)],
         comics: [...getDependecies(CardType.COMICS, entity.comics?.items)],
-        type
+        type,
+        favorite: false
       };
     });
 }

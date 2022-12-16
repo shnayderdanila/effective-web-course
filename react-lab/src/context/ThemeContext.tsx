@@ -5,5 +5,5 @@ interface AppThemeModeInterface {
   setMode(mode: string): void;
 }
 
-// Theme for switch light, black mode
+// Theme for switch light, dark mode
 export const ThemeMode = createContext<AppThemeModeInterface | null>(null);

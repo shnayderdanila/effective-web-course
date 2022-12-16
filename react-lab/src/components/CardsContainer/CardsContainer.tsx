@@ -33,13 +33,17 @@ interface ICardsContainer {
   incrementOffset(): void;
   get isTotal(): boolean;
   setCurId(id: number): void;
+  addFavorite(card: ICard): void;
+  removeFavorite(card: ICard): void;
 }
 
 export const CardsContainer: FC<ICardsContainer> = ({
   data,
   incrementOffset,
   isTotal,
-  setCurId
+  setCurId,
+  addFavorite,
+  removeFavorite
 }) => {
   const theme = useContext(ThemeMode);
 
@@ -58,7 +62,13 @@ export const CardsContainer: FC<ICardsContainer> = ({
       data={data}
       endReached={incrementOffset}
       itemContent={(index, item) => (
-        <Card key={item.id} card={item} setId={setCurId} />
+        <Card
+          key={item.id}
+          card={item}
+          setId={setCurId}
+          addFavorite={addFavorite}
+          removeFavorite={removeFavorite}
+        />
       )}
     />
   ) : (

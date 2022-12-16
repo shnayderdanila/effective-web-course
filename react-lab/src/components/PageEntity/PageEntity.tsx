@@ -20,6 +20,8 @@ interface IPage {
   get isTotal(): boolean;
   isError: boolean;
   type: CardType;
+  addFavorite(card: ICard): void;
+  removeFavorite(card: ICard): void;
 }
 
 const PageEntity: FC<IPage> = ({
@@ -31,7 +33,9 @@ const PageEntity: FC<IPage> = ({
   startWithName,
   isTotal,
   isError,
-  type
+  type,
+  addFavorite,
+  removeFavorite
 }) => {
   return (
     <PageLayout>
@@ -52,6 +56,8 @@ const PageEntity: FC<IPage> = ({
               incrementOffset={incrementOffset}
               setCurId={setCurId}
               isTotal={isTotal}
+              addFavorite={addFavorite}
+              removeFavorite={removeFavorite}
             />
           ) : (
             <Loader />

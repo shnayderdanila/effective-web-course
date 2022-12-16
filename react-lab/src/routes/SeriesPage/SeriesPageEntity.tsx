@@ -21,7 +21,9 @@ export const SeriesPageEntity: FC = observer(() => {
     setEntityId,
     setStartWithName,
     isTotal,
-    isError
+    isError,
+    addFavorite,
+    removeFavorite
   } = seriesStore;
 
   const loadMore = useCallback(() => {
@@ -45,6 +47,8 @@ export const SeriesPageEntity: FC = observer(() => {
       setStartWith={setStartWithName}
       isTotal={isTotal}
       isError={isError}
+      addFavorite={addFavorite}
+      removeFavorite={removeFavorite}
       type={CardType.SERIES}
     />
   );

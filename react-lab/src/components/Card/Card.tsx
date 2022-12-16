@@ -1,7 +1,9 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useState } from 'react';
 
 // Mui
-import { Box } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 // Types
 import { ICard } from 'types/card';
@@ -16,10 +18,24 @@ import classes from './Card.module.scss';
 interface ICard1 {
   card: ICard;
   setId(id: number): void;
+  addFavorite(card: ICard): void;
+  removeFavorite(card: ICard): void;
 }
 
-const Card: FC<ICard1> = ({ card, setId }) => {
+const Card: FC<ICard1> = ({ card, setId, addFavorite, removeFavorite }) => {
   const theme = useContext(ThemeMode);
+
+  const [isFavorite, setIsFavorite] = useState(card.favorite);
+
+  const handleAddFavorite = () => {
+    setIsFavorite(true);
+    addFavorite(card);
+  };
+
+  const handleRemoveFavorite = () => {
+    setIsFavorite(false);
+    removeFavorite(card);
+  };
 
   const linkToDetailEntity = (el: ICard) => {
     return '/'.concat(el.type).concat('/').concat(String(el.id));
@@ -35,19 +51,27 @@ const Card: FC<ICard1> = ({ card, setId }) => {
 
   return (
     <Box className={classes.card}>
-      <Link
-        to={linkToDetailEntity(card)}
-        className={classes.image}
-        onClick={() => setId(card.id)}
+      <div
+        className={`${classes.image} ${
+          theme?.mode === 'dark' ? classes.image_dark : classes.image_light
+        }`}
       >
-        <img
-          src={card.image}
-          alt={card.name}
-          className={`${classes.image} ${
-            theme?.mode === 'dark' ? classes.image_dark : classes.image_light
-          }`}
-        />
-      </Link>
+        {isFavorite ? (
+          <IconButton
+            className={classes.favorite}
+            onClick={handleRemoveFavorite}
+          >
+            <FavoriteIcon color="error" />
+          </IconButton>
+        ) : (
+          <IconButton className={classes.favorite} onClick={handleAddFavorite}>
+            <FavoriteBorderIcon color="error" />
+          </IconButton>
+        )}
+        <Link to={linkToDetailEntity(card)} onClick={() => setId(card.id)}>
+          <img src={card.image} alt={card.name} />
+        </Link>
+      </div>
       <section className={classes.nameDesc}>
         <h4>{card.name}</h4>
         <p>{truncate(card.description)}</p>

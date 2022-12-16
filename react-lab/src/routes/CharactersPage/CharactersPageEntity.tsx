@@ -21,7 +21,9 @@ export const CharacterPageEntity: FC = observer(() => {
     setStartWithName,
     isTotal,
     loadDone,
-    isError
+    isError,
+    addFavorite,
+    removeFavorite
   } = charactersStore;
 
   const loadMore = useCallback(() => {
@@ -45,6 +47,8 @@ export const CharacterPageEntity: FC = observer(() => {
       isTotal={isTotal}
       loadDone={loadDone}
       isError={isError}
+      addFavorite={addFavorite}
+      removeFavorite={removeFavorite}
       type={CardType.CHARACTERS}
     />
   );
