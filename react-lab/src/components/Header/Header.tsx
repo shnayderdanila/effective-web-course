@@ -63,6 +63,14 @@ const Header: FC = () => {
           >
             Series
           </NavLink>
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              isActive ? classes.link_current : classes.link
+            }
+          >
+            Favorites
+          </NavLink>
         </nav>
         <div className={classes.icons_wrapper}>
           <Slide
