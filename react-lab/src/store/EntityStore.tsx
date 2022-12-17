@@ -88,7 +88,7 @@ class EntityStore {
       `favorites${this.type}`,
       JSON.stringify(this.listFavorites)
     );
-    console.log(this.listFavorites);
+    this.updateDataListFavoriteData(card, true);
   };
 
   removeFavorite = (card: ICard) => {
@@ -100,6 +100,7 @@ class EntityStore {
       `favorites${this.type}`,
       JSON.stringify(this.listFavorites)
     );
+    this.updateDataListFavoriteData(card, false);
   };
 
   setStartWithName = (query: string) => {
@@ -202,6 +203,15 @@ class EntityStore {
       };
     }
     return { offset: this.offset };
+  }
+
+  updateDataListFavoriteData(favorite: ICard, isFavorite: boolean) {
+    const index = this.listData.findIndex(
+      (entity) => entity.id === favorite.id
+    );
+    if (index !== -1) {
+      this.listData.splice(index, 1, { ...favorite, favorite: isFavorite });
+    }
   }
 }
 
