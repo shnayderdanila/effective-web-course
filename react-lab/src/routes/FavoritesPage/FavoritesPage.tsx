@@ -1,11 +1,15 @@
+import React, { FC } from 'react';
+
+// Mui
 import { Grid } from '@mui/material';
+
+// Components
 import Card from 'components/Card';
 import PageLayout from 'components/PageLayout';
-import { observer } from 'mobx-react-lite';
-import React, { FC } from 'react';
-import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
 
-import classes from './FavoritesPage.module.scss';
+// Store
+import { observer } from 'mobx-react-lite';
+import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
 
 export const FavoritesPage: FC = observer(() => {
   const {
@@ -33,45 +37,65 @@ export const FavoritesPage: FC = observer(() => {
       listFavoritesComics.length ||
       listFavoritesSeries.length ? (
         <>
-          <h2>You favoriets characters</h2>
-          <Grid container spacing={3}>
-            {listFavoritesCharacters.map((character) => (
-              <Grid item xs={3}>
-                <Card
-                  card={character}
-                  setId={setCharacterId}
-                  addFavorite={addFavoriteCharacter}
-                  removeFavorite={removeFavoriteCharacter}
-                />
+          {listFavoritesCharacters.length ? (
+            <div>
+              <h2>You favoriets characters</h2>
+              <Grid container spacing={3}>
+                {listFavoritesCharacters.map((character) => (
+                  <Grid key={character.id} item xs={3}>
+                    <Card
+                      card={character}
+                      setId={setCharacterId}
+                      addFavorite={addFavoriteCharacter}
+                      removeFavorite={removeFavoriteCharacter}
+                    />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
-          <h2>You favoriets series</h2>
-          <Grid container spacing={3}>
-            {listFavoritesSeries.map((serie) => (
-              <Grid item xs={3}>
-                <Card
-                  card={serie}
-                  setId={setSerieId}
-                  addFavorite={addFavoriteSerie}
-                  removeFavorite={removeFavoriteSerie}
-                />
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {listFavoritesSeries.length ? (
+            <div>
+              <h2>You favoriets series</h2>
+              <Grid container spacing={3}>
+                {listFavoritesSeries.map((serie) => (
+                  <Grid key={serie.id} item xs={3}>
+                    <Card
+                      card={serie}
+                      setId={setSerieId}
+                      addFavorite={addFavoriteSerie}
+                      removeFavorite={removeFavoriteSerie}
+                    />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
-          <h2>You favoriets comics</h2>
-          <Grid container spacing={3}>
-            {listFavoritesComics.map((comic) => (
-              <Grid item xs={3}>
-                <Card
-                  card={comic}
-                  setId={setComicId}
-                  addFavorite={addFavoriteComic}
-                  removeFavorite={removeFavoriteComic}
-                />
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {listFavoritesComics.length ? (
+            <div>
+              <h2>You favoriets comics</h2>
+              <Grid container spacing={3}>
+                {listFavoritesComics.map((comic) => (
+                  <Grid key={comic.id} item xs={3}>
+                    <Card
+                      card={comic}
+                      setId={setComicId}
+                      addFavorite={addFavoriteComic}
+                      removeFavorite={removeFavoriteComic}
+                    />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
+            </div>
+          ) : (
+            <></>
+          )}
         </>
       ) : (
         <div>
