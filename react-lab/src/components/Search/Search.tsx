@@ -16,6 +16,9 @@ import debounce from 'lodash.debounce';
 // Context
 import { ThemeMode } from 'context/ThemeContext';
 
+// i18 (translation)
+import { useTranslation } from 'react-i18next';
+
 // Types
 import { CardType } from 'types/cardType';
 
@@ -30,6 +33,8 @@ interface ISearch {
 
 export const Search: FC<ISearch> = ({ startWithName, setStartWith, type }) => {
   const theme = useContext(ThemeMode);
+
+  const { t } = useTranslation();
 
   const handleInputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +64,7 @@ export const Search: FC<ISearch> = ({ startWithName, setStartWith, type }) => {
         fullWidth
         defaultValue={startWithName}
         onChange={debouncedResults}
-        placeholder={`Find ${type}`}
+        placeholder={`${t('Find')} ${t(`${type}`)}`}
         focused
       />
     </div>

@@ -7,11 +7,16 @@ import { Grid } from '@mui/material';
 import Card from 'components/Card';
 import PageLayout from 'components/PageLayout';
 
+// i18 ( translation )
+import { useTranslation } from 'react-i18next';
+
 // Store
 import { observer } from 'mobx-react-lite';
 import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
 
 export const FavoritesPage: FC = observer(() => {
+  const { t } = useTranslation();
+
   const {
     listFavorites: listFavoritesCharacters,
     setEntityId: setCharacterId,
@@ -39,7 +44,7 @@ export const FavoritesPage: FC = observer(() => {
         <>
           {listFavoritesCharacters.length ? (
             <div>
-              <h2>You favoriets characters</h2>
+              <h2>{t('FavoritesCharacters')}</h2>
               <Grid container spacing={3}>
                 {listFavoritesCharacters.map((character) => (
                   <Grid key={character.id} item xs={3}>
@@ -59,7 +64,7 @@ export const FavoritesPage: FC = observer(() => {
 
           {listFavoritesSeries.length ? (
             <div>
-              <h2>You favoriets series</h2>
+              <h2>{t('FavoritesSeries')}</h2>
               <Grid container spacing={3}>
                 {listFavoritesSeries.map((serie) => (
                   <Grid key={serie.id} item xs={3}>
@@ -79,7 +84,7 @@ export const FavoritesPage: FC = observer(() => {
 
           {listFavoritesComics.length ? (
             <div>
-              <h2>You favoriets comics</h2>
+              <h2>{t('FavoritesComics')}</h2>
               <Grid container spacing={3}>
                 {listFavoritesComics.map((comic) => (
                   <Grid key={comic.id} item xs={3}>
@@ -99,8 +104,7 @@ export const FavoritesPage: FC = observer(() => {
         </>
       ) : (
         <div>
-          {' '}
-          <h2>You favorites is empty</h2>{' '}
+          <h2>{t('EmptyFavorites')}</h2>
         </div>
       )}
     </PageLayout>

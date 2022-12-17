@@ -6,6 +6,9 @@ import PageLayout from 'components/PageLayout';
 import Loader from 'components/Loader';
 import CardsContainer from 'components/CardsContainer';
 
+// i18 ( translation )
+import { useTranslation } from 'react-i18next';
+
 // Types
 import { ICard } from 'types/card';
 import { CardType } from 'types/cardType';
@@ -37,11 +40,13 @@ const PageEntity: FC<IPage> = ({
   addFavorite,
   removeFavorite
 }) => {
+  const { t } = useTranslation();
+
   return (
     <PageLayout>
       {isError ? (
         <div>
-          <h2>Erorr get {type}. Please try later.</h2>
+          <h2>{`${t('GetError')} ${t(`${type}.`)} ${t('TryLater')}`}</h2>
         </div>
       ) : (
         <>

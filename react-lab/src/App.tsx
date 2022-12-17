@@ -8,12 +8,10 @@ import { ThemeProvider } from '@mui/system';
 import router from 'routes';
 import { RouterProvider } from 'react-router-dom';
 
-//
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+// i18 (translation)
+import 'context/LanguageContext';
 
 // Context
-import { resources } from 'context/LanguageContext';
 import { ThemeMode } from 'context/ThemeContext';
 
 // theme for change color mui components
@@ -22,15 +20,6 @@ const muiTheme = createTheme({
     primary: {
       main: '#f3b13f'
     }
-  }
-});
-
-i18n.use(initReactI18next).init({
-  resources,
-  lng: 'en',
-
-  interpolation: {
-    escapeValue: false
   }
 });
 
