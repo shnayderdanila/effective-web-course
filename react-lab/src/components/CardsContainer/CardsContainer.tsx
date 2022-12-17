@@ -10,6 +10,9 @@ import Loader from 'components/Loader';
 // Virtuoso
 import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
 
+// i18 ( translation )
+import { useTranslation } from 'react-i18next';
+
 // Context
 import { ThemeMode } from 'context/ThemeContext';
 
@@ -45,6 +48,8 @@ export const CardsContainer: FC<ICardsContainer> = ({
   addFavorite,
   removeFavorite
 }) => {
+  const { t } = useTranslation();
+
   const theme = useContext(ThemeMode);
 
   return data.length ? (
@@ -73,7 +78,7 @@ export const CardsContainer: FC<ICardsContainer> = ({
     />
   ) : (
     <div>
-      <h2>Not found</h2>
+      <h2>{t('NotFound')}</h2>
     </div>
   );
 };

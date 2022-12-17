@@ -12,6 +12,7 @@ const resources = {
       characters: 'characters',
       series: 'series',
       comics: 'comics',
+      NotFound: 'Not found',
       FavoritesCharacters: 'You favoriets characters',
       FavoritesSeries: 'You favoriets series',
       FavoritesComics: 'You favoriets comics',
@@ -30,6 +31,7 @@ const resources = {
       characters: 'героев',
       series: 'фильмы',
       comics: 'комиксы',
+      NotFound: 'Ничего не найдено',
       FavoritesCharacters: 'Ваши избранные герои',
       FavoritesSeries: 'Ваши избранные фильмы',
       FavoritesComics: 'Ваши избранные комиксы',
@@ -40,9 +42,14 @@ const resources = {
   }
 };
 
+export enum LanguageResourse {
+  RU = 'ru',
+  EN = 'en'
+}
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
+  lng: localStorage.getItem('language') ?? LanguageResourse.EN,
 
   interpolation: {
     escapeValue: false
@@ -50,8 +57,3 @@ i18n.use(initReactI18next).init({
 });
 
 export default i18n;
-
-export enum LanguageResourse {
-  RU = 'ru',
-  EN = 'en'
-}

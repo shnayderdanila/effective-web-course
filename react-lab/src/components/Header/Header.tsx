@@ -29,8 +29,10 @@ const Header: FC = () => {
   const changeTheme = () => {
     if (theme?.mode === 'light') {
       theme?.setMode('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       theme?.setMode('light');
+      localStorage.setItem('theme', 'light');
     }
   };
 
@@ -40,6 +42,7 @@ const Header: FC = () => {
     } else {
       i18n.changeLanguage(LanguageResourse.RU);
     }
+    localStorage.setItem('language', i18n.language);
   };
 
   return (

@@ -46,7 +46,7 @@ const PageEntity: FC<IPage> = ({
     <PageLayout>
       {isError ? (
         <div>
-          <h2>{`${t('GetError')} ${t(`${type}.`)} ${t('TryLater')}`}</h2>
+          <h2>{`${t('GetError')} ${t(`${type}`)}. ${t('TryLater')}`}</h2>
         </div>
       ) : (
         <>
