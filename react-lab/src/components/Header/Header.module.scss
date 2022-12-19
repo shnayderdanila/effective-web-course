@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 300px;
+    min-width: 400px;
 
     .link {
       color: $color-orange;
@@ -31,6 +31,7 @@
     }
 
     .icons_wrapper {
+      display: flex;
       .icon_active {
         display: flex;
       }

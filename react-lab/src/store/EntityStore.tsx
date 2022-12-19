@@ -23,10 +23,14 @@ configure({ enforceActions: 'observed' });
 class EntityStore {
   constructor(type: CardType) {
     this.type = type;
+    this.listFavorites = JSON.parse(
+      localStorage.getItem(`favorites${this.type}`) ?? '[]'
+    );
     this.curEntityId = Number(localStorage.getItem(`${this.type}Id`)) ?? 0;
     makeObservable(this, {
       total: observable,
       listData: observable,
+      listFavorites: observable,
       curEntityId: observable,
       curEntity: observable,
       offset: observable,
@@ -35,6 +39,8 @@ class EntityStore {
       isError: observable,
       isTotal: computed,
       setStartWithName: action,
+      addFavorite: action,
+      removeFavorite: action,
       setEntityId: action,
       incrementOffset: action,
       loadEntities: action,
@@ -50,6 +56,9 @@ class EntityStore {
 
   // list with data from BE
   listData: ICard[] = [];
+
+  // list of favorites entity
+  listFavorites: ICard[];
 
   // id cur entity in detail card
   curEntityId: number;
@@ -72,6 +81,27 @@ class EntityStore {
   get isTotal(): boolean {
     return this.offset + envs.pageOffset > this.total;
   }
+
+  addFavorite = (card: ICard) => {
+    this.listFavorites.push({ ...card, favorite: true });
+    localStorage.setItem(
+      `favorites${this.type}`,
+      JSON.stringify(this.listFavorites)
+    );
+    this.updateDataListFavoriteData(card, true);
+  };
+
+  removeFavorite = (card: ICard) => {
+    this.listFavorites.splice(
+      this.listFavorites.findIndex((entity) => entity.id === card.id),
+      1
+    );
+    localStorage.setItem(
+      `favorites${this.type}`,
+      JSON.stringify(this.listFavorites)
+    );
+    this.updateDataListFavoriteData(card, false);
+  };
 
   setStartWithName = (query: string) => {
     if (query !== this.startWithName) {
@@ -108,7 +138,14 @@ class EntityStore {
         const data = await getEntityList(params, this.type);
 
         runInAction(() => {
-          this.listData = [...this.listData, ...data.data];
+          this.listData = [
+            ...this.listData,
+            ...data.data.map((el) => {
+              return this.listFavorites.find((fav) => fav.id === el.id)
+                ? { ...el, favorite: true }
+                : el;
+            })
+          ];
           this.total = data.total;
         });
       }
@@ -147,7 +184,8 @@ class EntityStore {
       comics: [],
       series: [],
       characters: [],
-      type: this.type
+      type: this.type,
+      favorite: false
     };
   };
 
@@ -165,6 +203,15 @@ class EntityStore {
       };
     }
     return { offset: this.offset };
+  }
+
+  updateDataListFavoriteData(favorite: ICard, isFavorite: boolean) {
+    const index = this.listData.findIndex(
+      (entity) => entity.id === favorite.id
+    );
+    if (index !== -1) {
+      this.listData.splice(index, 1, { ...favorite, favorite: isFavorite });
+    }
   }
 }
 

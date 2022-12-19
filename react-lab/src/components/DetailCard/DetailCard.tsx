@@ -7,6 +7,9 @@ import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
 // react router
 import { Link } from 'react-router-dom';
 
+// i18n ( translation )
+import { useTranslation } from 'react-i18next';
+
 // Context
 import { ThemeMode } from 'context/ThemeContext';
 
@@ -23,6 +26,7 @@ interface IDetailCardProps {
 
 export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
   const theme = useContext(ThemeMode);
+  const { t } = useTranslation();
   const { setEntityId: setCharacterId } = charactersStore;
   const { setEntityId: setComicId } = comicsStore;
   const { setEntityId: setSerieId } = seriesStore;
@@ -47,7 +51,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
       <div className={classes.flex_column}>
         {data?.type === CardType.CHARACTERS ? (
           <section>
-            <h3>Comics</h3>
+            <h3>{t('Comics')}</h3>
             <ul>
               {data.comics?.map((el) => (
                 <li key={el.id}>
@@ -64,7 +68,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
           </section>
         ) : (
           <section>
-            <h3>Characters</h3>
+            <h3>{t('Characters')}</h3>
             <ul>
               {data?.characters?.map((el) => (
                 <li key={el.id}>
@@ -83,7 +87,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
 
         {data.type === CardType.SERIES ? (
           <section>
-            <h3>Comics</h3>
+            <h3>{t('Comics')}</h3>
             <ul>
               {data.comics?.map((el) => (
                 <li key={el.id}>
@@ -100,7 +104,7 @@ export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
           </section>
         ) : (
           <section>
-            <h3>Series</h3>
+            <h3>{t('Series')}</h3>
             <ul>
               {data.series?.map((el) => (
                 <li key={el.id}>

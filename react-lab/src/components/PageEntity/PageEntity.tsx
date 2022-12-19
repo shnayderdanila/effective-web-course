@@ -6,6 +6,9 @@ import PageLayout from 'components/PageLayout';
 import Loader from 'components/Loader';
 import CardsContainer from 'components/CardsContainer';
 
+// i18 ( translation )
+import { useTranslation } from 'react-i18next';
+
 // Types
 import { ICard } from 'types/card';
 import { CardType } from 'types/cardType';
@@ -20,6 +23,8 @@ interface IPage {
   get isTotal(): boolean;
   isError: boolean;
   type: CardType;
+  addFavorite(card: ICard): void;
+  removeFavorite(card: ICard): void;
 }
 
 const PageEntity: FC<IPage> = ({
@@ -31,13 +36,17 @@ const PageEntity: FC<IPage> = ({
   startWithName,
   isTotal,
   isError,
-  type
+  type,
+  addFavorite,
+  removeFavorite
 }) => {
+  const { t } = useTranslation();
+
   return (
     <PageLayout>
       {isError ? (
         <div>
-          <h2>Erorr get {type}. Please try later.</h2>
+          <h2>{`${t('GetError')} ${t(`${type}`)}. ${t('TryLater')}`}</h2>
         </div>
       ) : (
         <>
@@ -52,6 +61,8 @@ const PageEntity: FC<IPage> = ({
               incrementOffset={incrementOffset}
               setCurId={setCurId}
               isTotal={isTotal}
+              addFavorite={addFavorite}
+              removeFavorite={removeFavorite}
             />
           ) : (
             <Loader />

@@ -15,4 +15,5 @@ export interface ICard {
   comics?: Dependecies[];
   series?: Dependecies[];
   type: CardType;
+  favorite: boolean;
 }

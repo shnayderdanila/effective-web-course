@@ -8,6 +8,9 @@ import { ThemeProvider } from '@mui/system';
 import router from 'routes';
 import { RouterProvider } from 'react-router-dom';
 
+// i18 (translation)
+import 'context/LanguageContext';
+
 // Context
 import { ThemeMode } from 'context/ThemeContext';
 
@@ -21,7 +24,9 @@ const muiTheme = createTheme({
 });
 
 const App: FC = () => {
-  const [mode, setMode] = useState('light');
+
+  const [mode, setMode] = useState(localStorage.getItem('theme') ?? 'light');
+
 
   return (
     <ThemeProvider theme={muiTheme}>

@@ -10,6 +10,9 @@ import Loader from 'components/Loader';
 // Virtuoso
 import { VirtuosoGrid, GridListProps } from 'react-virtuoso';
 
+// i18 ( translation )
+import { useTranslation } from 'react-i18next';
+
 // Context
 import { ThemeMode } from 'context/ThemeContext';
 
@@ -33,14 +36,20 @@ interface ICardsContainer {
   incrementOffset(): void;
   get isTotal(): boolean;
   setCurId(id: number): void;
+  addFavorite(card: ICard): void;
+  removeFavorite(card: ICard): void;
 }
 
 export const CardsContainer: FC<ICardsContainer> = ({
   data,
   incrementOffset,
   isTotal,
-  setCurId
+  setCurId,
+  addFavorite,
+  removeFavorite
 }) => {
+  const { t } = useTranslation();
+
   const theme = useContext(ThemeMode);
 
   return data.length ? (
@@ -58,12 +67,18 @@ export const CardsContainer: FC<ICardsContainer> = ({
       data={data}
       endReached={incrementOffset}
       itemContent={(index, item) => (
-        <Card key={item.id} card={item} setId={setCurId} />
+        <Card
+          key={item.id}
+          card={item}
+          setId={setCurId}
+          addFavorite={addFavorite}
+          removeFavorite={removeFavorite}
+        />
       )}
     />
   ) : (
     <div>
-      <h2>Not found</h2>
+      <h2>{t('NotFound')}</h2>
     </div>
   );
 };

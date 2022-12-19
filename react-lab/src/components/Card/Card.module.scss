@@ -6,16 +6,36 @@
   justify-content: flex-start;
   flex-direction: column;
   margin-top: 10px;
-
   height: 520px;
   width: 250px;
-  .image {
+
+.image {
+    width: 100%;
     height: 320px;
-    transition: transform 0.5s ease-in-out;
-    background-color: $color-gray;
-    &:hover {
-      transform: scale(1.03);
+    position: relative;
+
+    .favorite {
+      position: absolute;
+      right: 0px;
+      z-index: 2;
+      &:hover {
+        z-index: 3;
+      }
     }
+
+    img {
+      position: relative;
+      width: 100%;
+      height: 320px;
+
+      z-index: 2;
+      &:hover {
+        z-index: 1;
+      }
+    }
+
+    height: 320px;
+
   }
 
   .image_light {

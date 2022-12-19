@@ -8,6 +8,7 @@ import { SeriesPageDetail } from './SeriesPage/SeriesPageDetail';
 import { SeriesPageEntity } from './SeriesPage/SeriesPageEntity';
 import { ComicsPageEntity } from './ComicsPage/ComicsPageEntity';
 import { ComicsPageDetail } from './ComicsPage/ComicsPageDetail';
+import { FavoritesPage } from './FavoritesPage/FavoritesPage';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: '/series/:seriesid',
     element: <SeriesPageDetail />
+  },
+  {
+    path: '/favorites',
+    element: <FavoritesPage />
   }
 ]);
 
