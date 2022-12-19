@@ -1,10 +1,18 @@
-import React, { FC } from 'react';
-import { RouterProvider } from 'react-router-dom';
+import React, { FC, useState } from 'react';
+
+// Mui
 import { createTheme } from '@mui/material/styles';
-import router from 'routes';
 import { ThemeProvider } from '@mui/system';
 
-const theme = createTheme({
+// react router
+import router from 'routes';
+import { RouterProvider } from 'react-router-dom';
+
+// Context
+import { ThemeMode } from 'context/ThemeContext';
+
+// theme for change color mui components
+const muiTheme = createTheme({
   palette: {
     primary: {
       main: '#f3b13f'
@@ -13,9 +21,13 @@ const theme = createTheme({
 });
 
 const App: FC = () => {
+  const [mode, setMode] = useState('light');
+
   return (
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+    <ThemeProvider theme={muiTheme}>
+      <ThemeMode.Provider value={{ mode, setMode }}>
+        <RouterProvider router={router} />
+      </ThemeMode.Provider>
     </ThemeProvider>
   );
 };

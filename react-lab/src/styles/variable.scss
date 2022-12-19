@@ -1,6 +1,14 @@
+// color light mode
 $color-white: #ffffff;
+$color-gray: #616161;
 $color-black: #000000;
-$color-grey: #616161;
 $color-orange: #f3b13f;
 $color-red: #c11718;
-$shadow-card: rgba(34, 60, 80, 0.6);
+
+// color dark mode
+$color-dark-gray: #423e37;
+$color-dark-red: #501a22;
+
+// shadow
+$light-shadow-card: rgba(34, 60, 80, 0.6);
+$dark-shadow-card: rgba(255, 0, 0, 0.3);

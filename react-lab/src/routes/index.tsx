@@ -2,10 +2,12 @@ import React from 'react';
 
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import PageEntity from 'routes/PageEntity';
-import { characters, comics, series } from './MarvelDependecies';
-import PageDetailEntity from './PageDetailEntity';
-
+import { CharacterPageEntity } from './CharactersPage/CharactersPageEntity';
+import { CharactersPageDetail } from './CharactersPage/CharactersPageDetail';
+import { SeriesPageDetail } from './SeriesPage/SeriesPageDetail';
+import { SeriesPageEntity } from './SeriesPage/SeriesPageEntity';
+import { ComicsPageEntity } from './ComicsPage/ComicsPageEntity';
+import { ComicsPageDetail } from './ComicsPage/ComicsPageDetail';
 
 const router = createBrowserRouter([
   {
@@ -14,45 +16,27 @@ const router = createBrowserRouter([
   },
   {
     path: '/characters',
-    element: <PageEntity />,
-    loader: () => {
-      return characters;
-    }
+    element: <CharacterPageEntity />
   },
   {
     path: '/characters/:characterid',
-    element: <PageDetailEntity />,
-    loader: ({ params }) => {
-      return characters.find((el) => el.id === Number(params.characterid));
-    }
+    element: <CharactersPageDetail />
   },
   {
     path: '/comics',
-    element: <PageEntity />,
-    loader: () => {
-      return comics;
-    }
+    element: <ComicsPageEntity />
   },
   {
     path: '/comics/:comicsid',
-    element: <PageDetailEntity />,
-    loader: ({ params }) => {
-      return comics.find((el) => el.id === Number(params.comicsid));
-    }
+    element: <ComicsPageDetail />
   },
   {
     path: '/series',
-    element: <PageEntity />,
-    loader: () => {
-      return series;
-    }
+    element: <SeriesPageEntity />
   },
   {
     path: '/series/:seriesid',
-    element: <PageDetailEntity />,
-    loader: ({ params }) => {
-      return series.find((el) => el.id === Number(params.seriesid));
-    }
+    element: <SeriesPageDetail />
   }
 ]);
 

@@ -1,65 +1,124 @@
-import React, { FC } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import { ICard } from 'types/card';
-import { CardType } from 'types/cardType';
+import React, { FC, useContext } from 'react';
 
+// Store
+import { observer } from 'mobx-react-lite';
+import { charactersStore, comicsStore, seriesStore } from 'store/EntityStore';
+
+// react router
+import { Link } from 'react-router-dom';
+
+// Context
+import { ThemeMode } from 'context/ThemeContext';
+
+// Types
+import { CardType } from 'types/cardType';
+import { Dependecies, ICard } from 'types/card';
+
+// Styles
 import classes from './DetailCard.module.scss';
 
-export const DetailCard: FC = () => {
-  const data = useLoaderData() as ICard;
+interface IDetailCardProps {
+  data?: ICard;
+}
 
-  const linkToDetailEntity = (el: ICard) => {
-    return '/'.concat(el.type).concat('/').concat(String(el.id));
+export const DetailCard: FC<IDetailCardProps> = observer(({ data }) => {
+  const theme = useContext(ThemeMode);
+  const { setEntityId: setCharacterId } = charactersStore;
+  const { setEntityId: setComicId } = comicsStore;
+  const { setEntityId: setSerieId } = seriesStore;
+
+  const linkToDetailEntity = (el: Dependecies) => {
+    return '/'.concat(`${el.type}`).concat('/').concat(`${el.id}`);
   };
 
-  return (
+  return data ? (
     <div className={classes.flex_wrapper}>
       <div className={classes.card_description}>
-        <img src={data.image} alt={data.name} className={classes.image} />
+        <img
+          src={data.image}
+          alt={data.name}
+          className={`${classes.image} ${
+            theme?.mode === 'dark' ? classes.image_dark : classes.image_light
+          }`}
+        />
         <p>{data.description}</p>
       </div>
 
       <div className={classes.flex_column}>
-        {data.type === CardType.CHARACHTERS ? (
+        {data?.type === CardType.CHARACTERS ? (
           <section>
             <h3>Comics</h3>
-            {data.comics?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data.comics?.map((el) => (
+                <li key={el.id}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setComicId(el.id)}
+                  >
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         ) : (
           <section>
             <h3>Characters</h3>
-            {data.characters?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data?.characters?.map((el) => (
+                <li key={el.id}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setCharacterId(el.id)}
+                  >
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
 
         {data.type === CardType.SERIES ? (
           <section>
             <h3>Comics</h3>
-            {data.comics?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data.comics?.map((el) => (
+                <li key={el.id}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setComicId(el.id)}
+                  >
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         ) : (
           <section>
             <h3>Series</h3>
-            {data.series?.map((el) => (
-              <Link className={classes.link} to={linkToDetailEntity(el)}>
-                {el.name}
-              </Link>
-            ))}
+            <ul>
+              {data.series?.map((el) => (
+                <li key={el.id}>
+                  <Link
+                    className={classes.link}
+                    to={linkToDetailEntity(el)}
+                    onClick={() => setSerieId(el.id)}
+                  >
+                    {el.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
       </div>
     </div>
+  ) : (
+    <></>
   );
-};
+});

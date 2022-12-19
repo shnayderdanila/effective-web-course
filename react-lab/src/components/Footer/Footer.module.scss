@@ -7,21 +7,29 @@
 
   flex: 0 0 auto;
 
+  margin-top: 100px;
   padding: 10px 30px;
 
   color: $color-white;
-  background-color: $color-grey;
 
   .logo {
     padding: 0;
     max-width: 200px;
   }
 
-  a {
+  .footer_link {
     color: $color-white;
 
     &:hover {
       color: $color-white;
     }
   }
+}
+
+.light {
+  background-color: $color-gray;
+}
+
+.dark {
+  background-color: $color-dark-gray;
 }

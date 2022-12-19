@@ -5,13 +5,25 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: 30px;
-  height: 520px;
+  margin-top: 10px;
 
+  height: 520px;
+  width: 250px;
   .image {
-    width: 100%;
-    max-height: 320px;
-    box-shadow: 0px 10px 15px -4px $shadow-card;
+    height: 320px;
+    transition: transform 0.5s ease-in-out;
+    background-color: $color-gray;
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  .image_light {
+    box-shadow: 0px 10px 13px 4px $light-shadow-card;
+  }
+
+  .image_dark {
+    box-shadow: 0px 0px 18px 8px $dark-shadow-card;
   }
 
   .nameDesc {
