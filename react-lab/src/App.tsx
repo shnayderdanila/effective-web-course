@@ -24,7 +24,9 @@ const muiTheme = createTheme({
 });
 
 const App: FC = () => {
+
   const [mode, setMode] = useState(localStorage.getItem('theme') ?? 'light');
+
 
   return (
     <ThemeProvider theme={muiTheme}>
