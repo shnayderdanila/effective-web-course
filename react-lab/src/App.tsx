@@ -8,7 +8,7 @@ import { ThemeProvider } from '@mui/system';
 import router from 'routes';
 import { RouterProvider } from 'react-router-dom';
 
-// i18 (translation)
+// i18 ( translation )
 import 'context/LanguageContext';
 
 // Context
